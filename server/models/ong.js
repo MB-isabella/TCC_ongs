@@ -9,7 +9,10 @@ const ongSchema = new mongoose.Schema({
   categoria: {type: [String], required: true},
   banner: {type: String, required: true},
   logo: {type: String, required: true},
-  carrossel: {type: [String], required: true}
+  carrossel: {type: [String], required: true},
+  qrcode: {type: String, required: true},
+  chavepix: {type: String, required: true},
+  instagram: {type: String, required: false}
  }, { timestamps: true });
 
 module.exports = mongoose.model('Ong', ongSchema);

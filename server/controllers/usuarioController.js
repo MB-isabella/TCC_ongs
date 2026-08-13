@@ -1,4 +1,5 @@
 const bcrypt = require('bcryptjs');
+const { uploadToCloudinary } = require('../routes/cloudinary');
 const jwt = require('jsonwebtoken');
 const Usuario = require('../models/usuario');
 const { JWT_SECRET } = require('../config');
@@ -44,6 +45,17 @@ const registrarUsuario = async (req, res) => {
       return res.status(400).json({ mensagem: 'Usuário já cadastrado' });
     }
 
+    if (!senha || senha.trim() === '') {
+      return res.status(400).json({ mensagem: 'A senha é obrigatória' });
+    }
+
+    // Faz upload da imagem de perfil para o cloudinary caso houver
+    let imagemUrl = '';
+    if (req.file) {
+      const resultadoUpload = await uploadToCloudinary(req.file.path);
+      imagemUrl = resultadoUpload.secure_url;
+    }
+
     const salt = await bcrypt.genSalt(10);
     const senhaHash = await bcrypt.hash(senha, salt);
 
@@ -52,7 +64,7 @@ const registrarUsuario = async (req, res) => {
       login,
       email,
       senha: senhaHash,
-      imagem_perfil,
+      imagem_perfil: imagemUrl, //salva no bd a url da imagem na nuvem
     });
 
     await novoUsuario.save();
@@ -65,7 +77,6 @@ const registrarUsuario = async (req, res) => {
 };
 
 // Realiza a edição ou update
-// o hash está certo ??
 
 const editarUsuario = async (req, res) => {
   const { id } = req.params;
@@ -73,7 +84,7 @@ const editarUsuario = async (req, res) => {
 
   try {
     const usuarioEditar = await Usuario.findById(id);
-    const usuarioIgual = email ? await Usuario.findOne({ email, _id: { $ne: id } }): null;
+    const usuarioIgual = email ? await Usuario.findOne({ email, _id: { $ne: id } }) : null;
 
     if (!usuarioEditar) {
       return res.status(404).json({ mensagem: 'Usuário não encontrado' });
@@ -84,31 +95,38 @@ const editarUsuario = async (req, res) => {
     }
 
     let senhaHashEditada;
-    if (senha) {
+    if (senha && senha.trim() !== '') {
       const salt = await bcrypt.genSalt(10);
       senhaHashEditada = await bcrypt.hash(senha, salt);
     }
 
-    if (nome) usuarioEditar.nome = nome;
-    if (login) usuarioEditar.login = login;
-    if (email) usuarioEditar.email = email;
-    if (senha) usuarioEditar.senha = senhaHashEditada;
-    if (imagem_perfil) usuarioEditar.imagem_perfil = imagem_perfil;
-
-    await usuarioEditar.save();
-
-    res.json({ mensagem: 'Usuário atualizado com sucesso', usuario: usuarioEditar });
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ mensagem: 'Erro ao atualizar usuário' });
+    // cloudinary
+    let novaImagem = imagem_perfil;
+  if (req.file) {
+    const resultadoUpload = await uploadToCloudinary(req.file.path);
+    novaImagem = resultadoUpload.secure_url;
   }
+
+  if (nome) usuarioEditar.nome = nome;
+  if (login) usuarioEditar.login = login;
+  if (email) usuarioEditar.email = email;
+  if (senhaHashEditada) usuarioEditar.senha = senhaHashEditada;
+  if (novaImagem) usuarioEditar.imagem_perfil = novaImagem;
+
+  await usuarioEditar.save();
+
+  res.json({ mensagem: 'Usuário atualizado com sucesso', usuario: usuarioEditar });
+} catch (error) {
+  console.error(error);
+  res.status(500).json({ mensagem: 'Erro ao atualizar usuário' });
+}
 };
 
 const deletarUsuario = async (req, res) => {
   const { id } = req.params;
 
   try {
-    const usuarioDeletar = await Usuario.findOneAndDelete({ _id: id});
+    const usuarioDeletar = await Usuario.findOneAndDelete({ _id: id });
 
     if (!usuarioDeletar) {
       return res.status(404).json({ mensagem: 'Usuário não encontrado' });
@@ -121,10 +139,37 @@ const deletarUsuario = async (req, res) => {
   }
 };
 
+const getPerfilUsuario = async (req, res) => {
+  try {
+    const { id } = req.params;
+
+    if (!id) {
+      return res.status(400).json({ message: 'ID do usuário é obrigatório' });
+    }
+
+    const usuario = await Usuario.findById(id).select('nome login email imagem_perfil');
+
+    if (!usuario) {
+      return res.status(404).json({ message: 'Usuário não encontrado' });
+    }
+
+    res.json({
+      id: usuario._id,
+      nome: usuario.nome,
+      login: usuario.login,
+      email: usuario.email,
+      imagem_perfil: usuario.imagem_perfil
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: 'Erro ao buscar usuário' });
+  }
+};
 
 module.exports = {
   loginUsuario,
   registrarUsuario,
   editarUsuario,
   deletarUsuario,
+  getPerfilUsuario,
 };
