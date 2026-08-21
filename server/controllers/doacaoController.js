@@ -28,30 +28,6 @@ const getInfoOng = async (req, res) => {
   }
 };
 
-/* const getUsuarioVerficacao = async (req, res) => {
-  try {
-    const { id } = req.params;
-
-    if (!id) {
-      return res.status(400).json({ message: 'ID do usuário é obrigatório' });
-    }
-
-    const usuario = await Usuario.findById(id).select('nome');
-
-    if (!usuario) {
-      return res.status(404).json({ message: 'Usuário não encontrado' });
-    }
-
-    return res.status(200).json({
-      id: usuario._id,
-      nome: usuario.nome
-    });
-  } catch (error) {
-    console.error(error);
-    return res.status(500).json({ message: 'Erro ao buscar informações do usuário' });
-  }
-}; */
-
 const gerarDoacao = async (req, res) => {
   try {
     const { usuarioId, ongId } = req.body;

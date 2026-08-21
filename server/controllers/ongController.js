@@ -92,7 +92,7 @@ const registrarOng = async (req, res) => {
       nome,
       login,
       email,
-      senha: senhaHashEditada, // CORRIGIDO: Estava 'senhaHash' antes
+      senha: senhaHashEditada, 
       cnpj,
       cidade_regiao,
       categoria,

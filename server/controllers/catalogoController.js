@@ -1,5 +1,4 @@
 const Ong = require('../models/ong');
-const { uploadToCloudinary } = require('../utils/cloudinary');
 
 // função para carregar as informações que serão utilizadas nos cards de ong no catálogo
 const getOngs = async (req, res) => {
@@ -30,7 +29,7 @@ const getPerfilOngs = async (req, res) => {
       return res.status(400).json({ message: 'ID da ONG é obrigatório' });
     }
 
-    const ong = await Ong.findById(id).select('nome email cnpj cidade_regiao categoria banner logo carrossel');
+    const ong = await Ong.findById(id).select('nome email cnpj cidade_regiao categoria banner logo carrossel instagram');
 
     if (!ong) {
       return res.status(404).json({ message: 'ONG não encontrada' });
@@ -45,7 +44,8 @@ const getPerfilOngs = async (req, res) => {
       categoria: ong.categoria,
       banner: ong.banner,
       logo: ong.logo,
-      carrossel: ong.carrossel
+      carrossel: ong.carrossel,
+      instagram: ong.instagram
     });
   } catch (error) {
     console.error(error);
