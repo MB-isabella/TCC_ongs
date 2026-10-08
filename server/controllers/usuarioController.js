@@ -52,7 +52,7 @@ const registrarUsuario = async (req, res) => {
     // Faz upload da imagem de perfil para o cloudinary caso houver
     let imagemUrl = '';
     if (req.file) {
-      const resultadoUpload = await uploadToCloudinary(req.file.path);
+      const resultadoUpload = await uploadToCloudinary(req.file.buffer, req.file.originalname);
       imagemUrl = resultadoUpload.secure_url;
     }
 

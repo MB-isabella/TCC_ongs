@@ -69,7 +69,8 @@ const uploadToCloudinary = (fileBuffer, originalName) => {
 
     const uploadStream = cloudinary.uploader.upload_stream(
       {
-        folder: 'cinelosofia',
+        folder: 'sistemaONGStorres',
+        asset_folder: 'sistemaONGStorres',
         resource_type: 'image',
         public_id: publicId,
         overwrite: false,

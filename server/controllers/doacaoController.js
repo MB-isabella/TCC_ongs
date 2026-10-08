@@ -10,7 +10,7 @@ const getInfoOng = async (req, res) => {
       return res.status(400).json({ message: 'ID da ONG é obrigatório' });
     }
 
-    const ong = await Ong.findById(id).select('nome qrcode chavepix');
+    const ong = await Ong.findById(id).select('nome qrcode chave_pix');
 
     if (!ong) {
       return res.status(404).json({ message: 'ONG não encontrada' });
@@ -20,7 +20,7 @@ const getInfoOng = async (req, res) => {
       id: ong._id,
       nome: ong.nome,
       qrcode: ong.qrcode,
-      chavepix: ong.chavepix
+      chave_pix: ong.chave_pix
     });
   } catch (error) {
     console.error(error);

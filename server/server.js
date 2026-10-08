@@ -1,6 +1,10 @@
 // backend/server.js
 const express = require('express');
 const cors = require('cors');
+const multer = require('multer');
+const upload = multer({
+  storage: multer.memoryStorage()
+});
 const connectDB = require('./mongo');
 const { uploadToCloudinary } = require('./routes/cloudinary');
 const userRoutes = require('./routes/userRoutes');

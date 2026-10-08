@@ -1,0 +1,81 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@500;600;700;800&display=swap');
+
+* { box-sizing: border-box; }
+
+.tela-inicial {
+	min-height: 100vh;
+	overflow: hidden;
+	color: #fff8f2;
+	background-color: #57090e;
+	background-position: center;
+	background-repeat: no-repeat;
+	background-size: 100% 100%;
+	font-family: 'DM Sans', sans-serif;
+}
+
+.navbar-inicial {
+	position: relative;
+	z-index: 20;
+	min-height: 74px;
+	padding: 10px clamp(25px, 5vw, 72px);
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 20px;
+	background: #2d0306;
+}
+
+.placeholder-icone {
+	width: 50px;
+	height: 50px;
+	display: grid;
+	place-items: center;
+	border: 2px solid #fff8f2;
+	border-radius: 50%;
+	color: #fff8f2;
+	font-family: Georgia, serif;
+	font-size: 42px;
+	line-height: .8;
+	text-decoration: none;
+}
+
+.links-navbar { position: absolute; left: 50%; display: flex; align-items: center; gap: clamp(10px, 3vw, 48px); transform: translateX(-50%); }
+.link-navbar { padding: 14px 20px; border-radius: 8px; color: #fff8f2; font-family: 'Poppins', sans-serif; font-size: clamp(18px, 1.7vw, 24px); font-weight: 500; text-decoration: none; white-space: nowrap; }
+.botao-login { border: 0; cursor: pointer; background: transparent; }
+.link-navbar:hover { background: #914347; }
+.login-navbar { position: relative; }
+
+.modal-login { position: absolute; z-index: 10; top: calc(100% + 10px); left: 50%; display: grid; place-items: start center; transform: translateX(-50%); }
+.conteudo-modal-login { width: 366px; max-width: calc(100vw - 32px); padding: 18px 22px 31px; border-radius: 8px; color: #640b0e; background: #fff; box-shadow: 0 8px 24px rgba(45, 3, 6, .2); }
+.conteudo-modal-login h2 { margin: 0 0 17px; font-family: 'Poppins', sans-serif; font-size: 28px; font-weight: 700; line-height: 1.34; }
+.opcoes-login { display: grid; grid-template-columns: 1fr 1fr; gap: 23px; }
+.opcao-login { min-height: 128px; display: flex; align-items: center; justify-content: center; gap: 12px; flex-direction: column; border-radius: 8px; color: #710f15; background: #fff; box-shadow: 0 4px 18px rgba(73, 24, 26, .12); font-family: 'Inter', sans-serif; font-size: 14px; text-decoration: none; }
+.opcao-login:hover { background: #fffafa; }
+.icone-login { width: 48px; height: 57px; object-fit: contain; }
+
+.hero-inicial {
+	position: relative;
+	min-height: calc(100vh - 74px);
+	max-width: 1370px;
+	margin: 0 auto;
+	padding: clamp(60px, 10vh, 125px) clamp(30px, 8vw, 115px);
+	display: grid;
+	grid-template-columns: minmax(340px, .95fr) minmax(470px, 1.05fr);
+	align-items: center;
+	gap: clamp(45px, 7vw, 100px);
+}
+
+.texto-hero { position: relative; z-index: 1; }
+.texto-hero h1 { margin: 0; font-family: 'Poppins', sans-serif; font-weight: 700; font-size: clamp(48px, 5.6vw, 80px); line-height: 1.04; letter-spacing: -.045em; }
+.texto-hero p { max-width: 500px; margin: 36px 0 42px; color: #f1d8d1; font-family: 'Inter', sans-serif; font-size: clamp(20px, 2vw, 28px); line-height: 1.4; }
+.botao-catalogo { display: inline-block; padding: 20px 28px; border: 1px solid #fff8f2; border-radius: 6px; color: #fff8f2; background: #4A0707; font-family: 'Poppins', sans-serif; font-size: clamp(16px, 1.45vw, 21px); font-weight: 500; text-decoration: none; transition: background-color .2s ease; }.botao-catalogo:hover { background: #300404; }
+
+.carrossel { position: relative; min-width: 0; }
+.placeholder-foto { position: relative; aspect-ratio: 1.1 / 1; overflow: hidden; border-radius: 28px; background: #dba5a6; box-shadow: 16px 22px 0 rgba(36, 1, 5, .26); }
+.placeholder-foto::before { content: ''; position: absolute; width: 43%; aspect-ratio: 1; top: 9%; right: 9%; border-radius: 50%; background: rgba(255, 236, 215, .72); }.placeholder-foto::after { content: ''; position: absolute; width: 90%; height: 67%; left: -17%; bottom: -29%; border-radius: 50%; background: rgba(113, 27, 40, .66); transform: rotate(15deg); }
+.foto-2 { background: #c39058; }.foto-3 { background: #876572; }
+.seta { position: absolute; top: 50%; width: 48px; height: 48px; border: 0; border-radius: 50%; color: #fff8f2; background: #780b12; cursor: pointer; font-size: 38px; line-height: 29px; transform: translateY(-50%); }.seta:hover { background: #9b2b32; }.seta-esquerda { left: 16px; }.seta-direita { right: 16px; }
+.indicadores { position: absolute; left: 50%; bottom: 18px; display: flex; gap: 10px; padding: 8px 15px; border-radius: 25px; background: rgba(255, 248, 242, .88); transform: translateX(-50%); }.indicador { width: 8px; height: 8px; padding: 0; border: 0; border-radius: 50%; background: #d5aaa8; cursor: pointer; }.indicador.ativo { background: #780b12; }
+
+@media (max-width: 800px) { .navbar-inicial { align-items: flex-start; flex-direction: column; padding-block: 16px; }.links-navbar { position: static; width: 100%; justify-content: space-between; gap: 2px; transform: none; }.link-navbar { padding: 9px 5px; font-size: 14px; }.hero-inicial { min-height: auto; grid-template-columns: 1fr; padding-block: 62px 76px; }.carrossel { width: 100%; max-width: 570px; margin: 0 auto; } }
+@media (max-width: 430px) { .texto-hero h1 { font-size: 45px; }.texto-hero p { font-size: 19px; }.botao-catalogo { width: 100%; text-align: center; } }
