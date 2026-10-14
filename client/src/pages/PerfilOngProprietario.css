@@ -2,7 +2,7 @@
 	min-height: 100vh;
 	color: #640b0e;
 	background: linear-gradient(180deg, #59090d 0 72%, #32070a 72% 100%);
-	font-family: 'Inter', sans-serif;
+	font-family: 'Poppins', sans-serif;
 }
 
 .painel-ong-proprietario {
@@ -237,6 +237,7 @@
 .sobre-ong-proprietario p {
 	margin: 0;
 	color: #4b4141;
+	font-family: 'Inter', sans-serif;
 	font-size: 13px;
 	line-height: 1.45;
 	white-space: pre-line;

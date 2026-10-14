@@ -157,6 +157,7 @@ export default function CadastrarOng() {
     if (!nome.trim()) return setMensagem('Campo obrigatório (Nome da ONG): informe o nome da organização.');
     if (!login.trim()) return setMensagem('Campo obrigatório (Nome de usuário): informe um nome de usuário.');
     if (!senha.trim()) return setMensagem('Campo obrigatório (Senha): informe uma senha para a conta da ONG.');
+    if (senha.length < 8) return setMensagem('A senha deve ter pelo menos 8 caracteres.');
     if (!email.trim()) return setMensagem('Campo obrigatório (E-mail): informe um endereço de e-mail.');
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim())) return setMensagem('E-mail inválido: confira o endereço informado.');
     if (!/^\d{14}$/.test(cnpj.replace(/\D/g, ''))) return setMensagem('CNPJ inválido: informe os 14 dígitos do CNPJ.');
@@ -266,6 +267,7 @@ export default function CadastrarOng() {
                 id="senha-ong-cadastro"
                 type="password"
                 autoComplete="new-password"
+                minLength={8}
                 value={senha}
                 onChange={(evento) => setSenha(evento.target.value)}
                 required

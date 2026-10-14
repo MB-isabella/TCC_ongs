@@ -68,6 +68,10 @@ const registrarOng = async (req, res) => {
       return res.status(400).json({ mensagem: 'Campo obrigatório (Senha): não foi possível gerar a senha inicial.' });
     }
 
+    if (senha.length < 8) {
+      return res.status(400).json({ mensagem: 'A senha deve ter pelo menos 8 caracteres.' });
+    }
+
     const ongExistente = await Ong.findOne({ email });
 
     if (ongExistente) {

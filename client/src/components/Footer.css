@@ -6,6 +6,13 @@
 	font-family: 'Inter', sans-serif;
 }
 
+.footer-conteudo {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 24px;
+}
+
 .footer-contatos p {
 	margin: 0 0 8px;
 	font-size: 18px;
@@ -17,8 +24,23 @@
 	margin-bottom: 0;
 }
 
+.footer-logo {
+	width: clamp(100px, 15vw, 160px);
+	max-height: 80px;
+	object-fit: contain;
+}
+
 @media (max-width: 430px) {
+	.footer {
+		padding-right: 24px;
+		padding-left: 24px;
+	}
+
 	.footer-contatos p {
 		font-size: 16px;
+	}
+
+	.footer-logo {
+		width: 90px;
 	}
 }

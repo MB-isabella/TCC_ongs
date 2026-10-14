@@ -54,6 +54,10 @@ const registrarUsuario = async (req, res) => {
       return res.status(400).json({ mensagem: 'A senha é obrigatória' });
     }
 
+    if (senha.length < 8) {
+      return res.status(400).json({ mensagem: 'A senha deve ter pelo menos 8 caracteres.' });
+    }
+
     // Faz upload da imagem de perfil para o cloudinary caso houver
     let imagemUrl = '';
     if (req.file) {

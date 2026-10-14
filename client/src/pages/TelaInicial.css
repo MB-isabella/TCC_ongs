@@ -1,4 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Poppins:wght@500;600;700;800&display=swap');
 
 * { box-sizing: border-box; }
 
@@ -10,7 +9,7 @@
 	background-position: center;
 	background-repeat: no-repeat;
 	background-size: 100% 100%;
-	font-family: 'DM Sans', sans-serif;
+	font-family: 'Poppins', sans-serif;
 }
 
 .navbar-inicial {
@@ -33,7 +32,7 @@
 	gap: 10px;
 	color: #fff8f2;
 	font-family: 'Poppins', sans-serif;
-	font-size: 17px;
+	font-size: 20px;
 	font-weight: 600;
 	text-decoration: none;
 }
@@ -55,7 +54,7 @@
 .conteudo-modal-login { width: 366px; max-width: calc(100vw - 32px); padding: 18px 22px 31px; border-radius: 8px; color: #640b0e; background: #fff; box-shadow: 0 8px 24px rgba(45, 3, 6, .2); }
 .conteudo-modal-login h2 { margin: 0 0 17px; font-family: 'Poppins', sans-serif; font-size: 28px; font-weight: 700; line-height: 1.34; }
 .opcoes-login { display: grid; grid-template-columns: 1fr 1fr; gap: 23px; }
-.opcao-login { min-height: 128px; display: flex; align-items: center; justify-content: center; gap: 12px; flex-direction: column; border-radius: 8px; color: #710f15; background: #fff; box-shadow: 0 4px 18px rgba(73, 24, 26, .12); font-family: 'Inter', sans-serif; font-size: 14px; text-decoration: none; }
+.opcao-login { min-height: 128px; display: flex; align-items: center; justify-content: center; gap: 12px; flex-direction: column; border-radius: 8px; color: #710f15; background: #fff; box-shadow: 0 4px 18px rgba(73, 24, 26, .12); font-family: 'Poppins', sans-serif; font-size: 14px; text-decoration: none; }
 .opcao-login:hover { background: #efe8e8; }
 .icone-login { width: 48px; height: 57px; object-fit: contain; }
 
@@ -73,7 +72,7 @@
 
 .texto-hero { position: relative; z-index: 1; }
 .texto-hero h1 { margin: 0; font-family: 'Poppins', sans-serif; font-weight: 700; font-size: clamp(48px, 5.6vw, 80px); line-height: 1.04; letter-spacing: -.045em; }
-.texto-hero p { max-width: 500px; margin: 36px 0 42px; color: #f1d8d1; font-family: 'Inter', sans-serif; font-size: clamp(20px, 2vw, 28px); line-height: 1.4; }
+.texto-hero p { max-width: 500px; margin: 36px 0 42px; color: #f1d8d1; font-family: 'Poppins', sans-serif; font-size: clamp(20px, 2vw, 28px); line-height: 1.4; }
 .botao-catalogo { display: inline-block; padding: 20px 28px; border: 1px solid #fff8f2; border-radius: 6px; color: #fff8f2; background: #4A0707; font-family: 'Poppins', sans-serif; font-size: clamp(16px, 1.45vw, 21px); font-weight: 500; text-decoration: none; }
 
 .carrossel { position: relative; min-width: 0; }

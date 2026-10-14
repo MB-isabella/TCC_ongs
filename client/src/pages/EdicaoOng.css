@@ -2,7 +2,7 @@
 	min-height: 100vh;
 	color: #700d11;
 	background: linear-gradient(180deg, #59090d 0 72%, #32070a 72% 100%);
-	font-family: 'Inter', sans-serif;
+	font-family: 'Poppins', sans-serif;
 }
 
 .painel-edicao-ong {
@@ -184,6 +184,10 @@
 	height: 100%;
 	resize: vertical;
 	line-height: 1.45;
+}
+
+.campo-descricao-edicao-ong textarea {
+	font-family: 'Inter', sans-serif;
 }
 
 .lapis-campo-edicao-ong {

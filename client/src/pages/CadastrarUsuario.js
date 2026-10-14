@@ -31,6 +31,10 @@ export default function CadastrarUsuario() {
 	const enviarCadastro = async (evento) => {
 		evento.preventDefault();
 		setMensagem('');
+		if (senha.length < 8) {
+			setMensagem('A senha deve ter pelo menos 8 caracteres.');
+			return;
+		}
 		setCarregando(true);
 
 		const dados = new FormData();
@@ -96,7 +100,7 @@ export default function CadastrarUsuario() {
 					<input id="email-cadastro" name="email" type="email" autoComplete="email" value={email} onChange={(evento) => setEmail(evento.target.value)} required />
 
 					<label htmlFor="senha-cadastro">Senha</label>
-					<input id="senha-cadastro" name="senha" type="password" autoComplete="new-password" value={senha} onChange={(evento) => setSenha(evento.target.value)} required />
+					<input id="senha-cadastro" name="senha" type="password" autoComplete="new-password" minLength={8} value={senha} onChange={(evento) => setSenha(evento.target.value)} required />
 
 					<label className="rotulo-foto-cadastro" htmlFor="imagem-cadastro">Foto de perfil</label>
 					<input id="imagem-cadastro" className="entrada-arquivo-cadastro" type="file" accept="image/*" onChange={(evento) => setImagem(evento.target.files?.[0] || null)} />
