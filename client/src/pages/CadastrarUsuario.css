@@ -41,16 +41,18 @@
 }
 
 .marca-cadastro {
-	width: 32px;
-	height: 32px;
+	width: 56px;
+	height: 56px;
 	display: grid;
 	place-items: center;
-	color: #fff;
-	font-size: 39px;
-	line-height: .8;
 	text-decoration: none;
-	text-shadow: 0 0 3px #fff;
 	transform: translateY(-7px);
+}
+
+.marca-cadastro img {
+	width: 56px;
+	height: 56px;
+	object-fit: contain;
 }
 
 .chamada-lateral-cadastro {
@@ -94,10 +96,6 @@
 	font-weight: 500;
 	text-decoration: none;
 	transition: background-color .18s ease;
-}
-
-.botao-login-cadastro:hover {
-	filter: brightness(1.15);
 }
 
 .conteudo-cadastro-usuario {
@@ -253,10 +251,6 @@
 	transition: filter .18s ease, opacity .18s ease;
 }
 
-.botao-enviar-cadastro:hover {
-	filter: brightness(1.15);
-}
-
 .botao-enviar-cadastro:disabled {
 	cursor: wait;
 	opacity: .7;
@@ -276,7 +270,13 @@
 	}
 
 	.marca-cadastro {
-		font-size: 31px;
+		width: 44px;
+		height: 44px;
+	}
+
+	.marca-cadastro img {
+		width: 44px;
+		height: 44px;
 	}
 
 	.chamada-lateral-cadastro p {

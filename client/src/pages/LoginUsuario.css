@@ -27,13 +27,13 @@
 	height: 49px;
 	display: grid;
 	place-items: center;
-	border: 2px solid #b37b83;
-	border-radius: 50%;
-	color: #b37b83;
-	font-family: Georgia, serif;
-	font-size: 40px;
-	line-height: .8;
 	text-decoration: none;
+}
+
+.logo-login img {
+	width: 100%;
+	height: 100%;
+	object-fit: contain;
 }
 
 .cabecalho-login {
@@ -133,10 +133,6 @@
 	font-size: 14px;
 }
 
-.botao-entrar:hover {
-	background: #8d1b20;
-}
-
 .botao-entrar:disabled {
 	cursor: wait;
 	opacity: .7;
@@ -199,10 +195,6 @@
 	background: rgba(132, 28, 34, .7);
 	font-size: 12px;
 	text-decoration: none;
-}
-
-.botao-cadastro:hover {
-	background: rgba(160, 46, 52, .86);
 }
 
 .botao-cadastro img {

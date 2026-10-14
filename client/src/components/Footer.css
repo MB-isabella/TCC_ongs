@@ -1,6 +1,6 @@
 .footer {
 	width: 100%;
-	padding: 30px clamp(30px, 5.5vw, 80px);
+	padding: 30px max(70px, clamp(30px, 5.5vw, 80px));
 	color: #fff;
 	background: #30070a;
 	font-family: 'Inter', sans-serif;

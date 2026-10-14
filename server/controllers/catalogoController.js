@@ -29,7 +29,7 @@ const getPerfilOngs = async (req, res) => {
       return res.status(400).json({ message: 'ID da ONG é obrigatório' });
     }
 
-    const ong = await Ong.findById(id).select('nome email cnpj cidade_regiao categoria banner logo carrossel instagram');
+    const ong = await Ong.findById(id).select('nome email cnpj cidade_regiao categoria descricao banner logo carrossel instagram');
 
     if (!ong) {
       return res.status(404).json({ message: 'ONG não encontrada' });
@@ -42,6 +42,7 @@ const getPerfilOngs = async (req, res) => {
       cnpj: ong.cnpj,
       cidade_regiao: ong.cidade_regiao,
       categoria: ong.categoria,
+      descricao: ong.descricao,
       banner: ong.banner,
       logo: ong.logo,
       carrossel: ong.carrossel,
@@ -94,6 +95,7 @@ const BarradePesquisa = async (req, res) => {
   }
 };
 
+/* fazer função para botão de filtrar por categoria*/
 
 
 module.exports = { getOngs, getPerfilOngs, BarradePesquisa };

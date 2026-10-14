@@ -1,25 +1,11 @@
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import CarrosselOngs from '../components/CarrosselOngs';
 import Footer from '../components/Footer';
 import './TelaInicial.css';
 
-const slides = [1, 2, 3];
-
 export default function TelaInicial() {
-	const [slideAtual, setSlideAtual] = useState(0);
 	const [loginAberto, setLoginAberto] = useState(false);
-
-	useEffect(() => {
-		const intervalo = setInterval(() => {
-			setSlideAtual((slide) => (slide + 1) % slides.length);
-		}, 4500);
-
-		return () => clearInterval(intervalo);
-	}, []);
-
-	const trocarSlide = (direcao) => {
-		setSlideAtual((slide) => (slide + direcao + slides.length) % slides.length);
-	};
 
 	return (
 		<>
@@ -28,7 +14,10 @@ export default function TelaInicial() {
 				style={{ backgroundImage: "url('/images/telainicialfundo.png')" }}
 			>
 			<nav className="navbar-inicial" aria-label="Navegação principal">
-				<Link to="/" className="placeholder-icone" aria-label="Início">♡</Link>
+				<Link to="/" className="placeholder-icone" aria-label="Início">
+					<img src="/images/logobranca.PNG" alt="" />
+					<span>OngsTorres</span>
+				</Link>
 				<div className="links-navbar">
 					<Link to="/" className="link-navbar">Início</Link>
 					<Link to="/cadastro-usuario" className="link-navbar">Cadastrar</Link>
@@ -60,25 +49,11 @@ export default function TelaInicial() {
 				<div className="texto-hero">
 					<h1>Conheça as<br />ONGS locais!</h1>
 					<p>Encontre organizações próximas a você e faça a diferença.</p>
-					<Link to="/catalogo" className="botao-catalogo">Descubra as organizações</Link>
+					<Link to="/catalogo" className="botao-catalogo hover-botao-vermelho sem-gradiente-uniforme">Descubra as organizações</Link>
 				</div>
 
-				<div className="carrossel" aria-label="Carrossel de fotos">
-					<div className={`placeholder-foto foto-${slideAtual + 1}`} aria-label={`Placeholder da foto ${slideAtual + 1}`} role="img" />
-					<button type="button" className="seta seta-esquerda" onClick={() => trocarSlide(-1)} aria-label="Foto anterior">‹</button>
-					<button type="button" className="seta seta-direita" onClick={() => trocarSlide(1)} aria-label="Próxima foto">›</button>
-					<div className="indicadores">
-						{slides.map((slide, indice) => (
-							<button
-								type="button"
-								key={slide}
-								className={indice === slideAtual ? 'indicador ativo' : 'indicador'}
-								onClick={() => setSlideAtual(indice)}
-								aria-label={`Selecionar foto ${indice + 1}`}
-								aria-current={indice === slideAtual ? 'true' : undefined}
-							/>
-						))}
-					</div>
+				<div className="carrossel">
+					<CarrosselOngs rotulo="Carrossel de imagens" mostrarControles />
 				</div>
 			</section>
 			</main>

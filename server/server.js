@@ -7,11 +7,9 @@ const upload = multer({
 });
 const connectDB = require('./mongo');
 const { uploadToCloudinary } = require('./routes/cloudinary');
-const userRoutes = require('./routes/userRoutes');
-const appointmentRoutes = require('./routes/appointmentRoutes');
+const catalogoRoutes = require('./routes/catalogoRoutes');
 const usuarioRoutes = require('./routes/usuarioRoutes');
 const ongRoutes = require('./routes/ongRoutes');
-const catalogoRoutes = require('./routes/catalogoRoutes');
 const doacaoRoutes = require('./routes/doacaoRoutes');
 const { PORT } = require('./config');
 
@@ -22,8 +20,6 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
-app.use('/api/users', userRoutes);
-app.use('/api/agendamentos', appointmentRoutes);
 app.use('/usuario', usuarioRoutes);
 app.use('/ong', ongRoutes);
 app.use('/catalogo', catalogoRoutes);

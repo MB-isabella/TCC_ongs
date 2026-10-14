@@ -1,0 +1,193 @@
+.conteudo-doacoes-usuario {
+	position: relative;
+	padding-bottom: 0;
+}
+
+.painel-doacoes-usuario {
+	position: relative;
+	min-height: calc(100vh - 48px);
+	padding: 16px 0 30px;
+	border-radius: 16px;
+	background: #fff;
+}
+
+.painel-doacoes-usuario > .voltar-catalogo-perfil-usuario {
+	top: 23px;
+}
+
+.cabecalho-doacoes-usuario {
+	position: relative;
+	min-height: 168px;
+	display: flex;
+	align-items: center;
+	gap: 28px;
+	margin: 0 10px 20px;
+	padding: 18px clamp(18px, 3vw, 30px);
+	border-radius: 14px;
+	background: #e8babb;
+	box-shadow: 0 7px 16px rgba(76, 5, 8, .12);
+}
+
+.moldura-foto-doacoes-usuario {
+	width: 142px;
+	height: 142px;
+}
+
+.identificacao-doacoes-usuario {
+	min-width: 0;
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	gap: 18px;
+	margin: 0 clamp(28px, 4vw, 44px) 0 0;
+	padding-top: 8px;
+}
+
+.cartao-login-doacoes-usuario {
+	width: min(100%, 204px);
+	min-height: 40px;
+	padding: 6px 14px;
+}
+
+.cartao-login-doacoes-usuario h1 {
+	font-size: 17px;
+}
+
+.cartao-login-doacoes-usuario p {
+	font-size: 12px;
+}
+
+.titulo-doacoes-usuario {
+	min-height: 58px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 18px;
+	padding: 8px 16px;
+	border-radius: 8px;
+	background: #fff;
+	box-shadow: 0 4px 15px rgba(50, 0, 0, .08);
+}
+
+.titulo-doacoes-usuario img {
+	width: 42px;
+	height: 42px;
+	object-fit: contain;
+}
+
+.titulo-doacoes-usuario h2 {
+	margin: 0;
+	color: #700d11;
+	font-family: 'Poppins', sans-serif;
+	font-size: clamp(20px, 2.7vw, 27px);
+	font-weight: 700;
+	text-align: center;
+}
+
+.lista-doacoes-usuario {
+	display: grid;
+	gap: 5px;
+}
+
+.item-doacao-usuario {
+	min-height: 56px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 16px;
+	padding: 12px clamp(24px, 5.5vw, 50px);
+	border-radius: 14px;
+	background: #fff;
+	box-shadow: 0 3px 11px rgba(50, 0, 0, .06);
+	color: #a42027;
+	font-size: 14px;
+}
+
+.item-doacao-usuario time {
+	flex: 0 0 auto;
+}
+
+.estado-doacoes-usuario {
+	margin: 0;
+	padding: 20px clamp(24px, 5.5vw, 50px);
+	color: #8d292d;
+	font-size: 14px;
+}
+
+@media (max-width: 600px) {
+	.cabecalho-doacoes-usuario {
+		min-height: 138px;
+		gap: 14px;
+		margin-inline: 8px;
+		padding: 16px 12px;
+	}
+
+	.painel-doacoes-usuario > .voltar-catalogo-perfil-usuario {
+		top: 20px;
+	}
+
+	.moldura-foto-doacoes-usuario {
+		width: 104px;
+		height: 104px;
+		border-width: 5px;
+	}
+
+	.identificacao-doacoes-usuario {
+		gap: 12px;
+		margin-right: 22px;
+		padding-top: 12px;
+	}
+
+	.cartao-login-doacoes-usuario {
+		min-height: 36px;
+		padding: 6px 10px;
+	}
+
+	.cartao-login-doacoes-usuario h1 {
+		font-size: 14px;
+	}
+
+	.titulo-doacoes-usuario {
+		gap: 8px;
+		padding: 7px 8px;
+	}
+
+	.titulo-doacoes-usuario img {
+		width: 32px;
+		height: 32px;
+	}
+
+	.titulo-doacoes-usuario h2 {
+		font-size: clamp(15px, 4vw, 20px);
+	}
+
+	.item-doacao-usuario {
+		padding-inline: 18px;
+		font-size: 13px;
+	}
+}
+
+@media (max-width: 380px) {
+	.cabecalho-doacoes-usuario {
+		gap: 9px;
+		padding-inline: 8px;
+	}
+
+	.moldura-foto-doacoes-usuario {
+		width: 88px;
+		height: 88px;
+		border-width: 4px;
+	}
+
+	.identificacao-doacoes-usuario {
+		margin-right: 12px;
+	}
+
+	.titulo-doacoes-usuario {
+		gap: 5px;
+	}
+
+	.titulo-doacoes-usuario h2 {
+		font-size: 14px;
+	}
+}

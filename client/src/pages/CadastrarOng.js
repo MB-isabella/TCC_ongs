@@ -19,18 +19,6 @@ const categoriaOpcoes = [
   'Outros',
 ];
 
-const gerarLoginAutomatico = (nome, email) => {
-  const base = (nome || email || 'ong')
-    .trim()
-    .toLowerCase()
-    .normalize('NFD')
-    .replace(/[\u0300-\u036f]/g, '')
-    .replace(/[^a-z0-9]+/g, '')
-    .slice(0, 18);
-
-  return `${base || 'ong'}${Math.random().toString(36).slice(2, 6)}`;
-};
-
 export default function CadastrarOng() {
   const navigate = useNavigate();
 
@@ -53,6 +41,8 @@ export default function CadastrarOng() {
   }, []);
 
   const [nome, setNome] = useState('');
+  const [login, setLogin] = useState('');
+  const [senha, setSenha] = useState('');
   const [email, setEmail] = useState('');
   const [cnpj, setCnpj] = useState('');
   const [regiao, setRegiao] = useState('');
@@ -67,11 +57,6 @@ export default function CadastrarOng() {
   const [menuCategoriasAberto, setMenuCategoriasAberto] = useState(false);
   const [mensagem, setMensagem] = useState('');
   const [carregando, setCarregando] = useState(false);
-
-  const loginAutomatico = useMemo(
-    () => gerarLoginAutomatico(nome, email),
-    [nome, email]
-  );
 
   const previewsCarrossel = useMemo(
     () => carrossel.map((arquivo) => ({ arquivo, url: URL.createObjectURL(arquivo) })),
@@ -170,6 +155,8 @@ export default function CadastrarOng() {
     setMensagem('');
 
     if (!nome.trim()) return setMensagem('Campo obrigatório (Nome da ONG): informe o nome da organização.');
+    if (!login.trim()) return setMensagem('Campo obrigatório (Nome de usuário): informe um nome de usuário.');
+    if (!senha.trim()) return setMensagem('Campo obrigatório (Senha): informe uma senha para a conta da ONG.');
     if (!email.trim()) return setMensagem('Campo obrigatório (E-mail): informe um endereço de e-mail.');
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim())) return setMensagem('E-mail inválido: confira o endereço informado.');
     if (!/^\d{14}$/.test(cnpj.replace(/\D/g, ''))) return setMensagem('CNPJ inválido: informe os 14 dígitos do CNPJ.');
@@ -185,15 +172,13 @@ export default function CadastrarOng() {
     setCarregando(true);
 
     try {
-      const loginFinal = loginAutomatico || 'ong';
-      const senhaFinal = `${(cnpj || 'ong').replace(/\D/g, '').slice(-8) || 'ong'}@2026`;
       const cidadeRegiao = regiao.trim();
 
       const dados = new FormData();
       dados.append('nome', nome);
-      dados.append('login', loginFinal);
+      dados.append('login', login.trim());
       dados.append('email', email);
-      dados.append('senha', senhaFinal);
+      dados.append('senha', senha);
       dados.append('cnpj', cnpj);
       dados.append('cidade_regiao', cidadeRegiao);
       dados.append('descricao', descricao);
@@ -239,13 +224,15 @@ export default function CadastrarOng() {
       >
         <div className="topo-lateral-cadastro-ong">
           <Link to="/" className="voltar-cadastro-ong">Voltar para o início</Link>
-          <Link to="/" className="marca-cadastro-ong" aria-label="Página inicial">♡</Link>
+          <Link to="/" className="marca-cadastro-ong" aria-label="Página inicial">
+            <img src="/images/logobranca.PNG" alt="" />
+          </Link>
         </div>
 
         <div className="chamada-lateral-cadastro-ong">
           <p>Já tem uma conta?</p>
           <h2>Bem-vindo de<br />volta!</h2>
-          <Link to="/login-ong" className="botao-login-cadastro-ong">Entrar</Link>
+          <Link to="/login-ong" className="botao-login-cadastro-ong hover-botao-vermelho">Entrar</Link>
         </div>
       </aside>
 
@@ -260,6 +247,29 @@ export default function CadastrarOng() {
             <div>
               <label htmlFor="nome-ong">Nome</label>
               <input id="nome-ong" value={nome} onChange={(evento) => setNome(evento.target.value)} required />
+            </div>
+
+            <div>
+              <label htmlFor="login-ong-cadastro">Nome de usuário</label>
+              <input
+                id="login-ong-cadastro"
+                autoComplete="username"
+                value={login}
+                onChange={(evento) => setLogin(evento.target.value)}
+                required
+              />
+            </div>
+
+            <div>
+              <label htmlFor="senha-ong-cadastro">Senha</label>
+              <input
+                id="senha-ong-cadastro"
+                type="password"
+                autoComplete="new-password"
+                value={senha}
+                onChange={(evento) => setSenha(evento.target.value)}
+                required
+              />
             </div>
 
             <div>
@@ -434,7 +444,7 @@ export default function CadastrarOng() {
 
           {mensagem && <p className="mensagem-cadastro-ong" role="status">{mensagem}</p>}
 
-          <button className="botao-enviar-cadastro-ong" type="submit" disabled={carregando}>
+          <button className="botao-enviar-cadastro-ong hover-botao-vermelho" type="submit" disabled={carregando}>
             {carregando ? 'Enviando...' : 'Cadastrar'}
           </button>
         </form>

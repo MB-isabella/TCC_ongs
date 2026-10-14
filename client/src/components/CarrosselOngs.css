@@ -1,0 +1,44 @@
+.carrossel-ongs {
+	position: relative;
+	width: 100%;
+	min-width: 0;
+	aspect-ratio: 1.1 / 1;
+	overflow: hidden;
+	border-radius: 28px;
+	background: #dba5a6;
+	box-shadow: 16px 22px 0 rgba(36, 1, 5, .26);
+}
+
+.placeholder-foto {
+	position: absolute;
+	inset: 0;
+	width: 100%;
+	height: 100%;
+	opacity: 0;
+	transition: opacity .5s ease;
+	background: #dba5a6;
+}
+
+.placeholder-foto::before { content: ''; position: absolute; width: 43%; aspect-ratio: 1; top: 9%; right: 9%; border-radius: 50%; background: rgba(255, 236, 215, .72); }
+.placeholder-foto::after { content: ''; position: absolute; width: 90%; height: 67%; left: -17%; bottom: -29%; border-radius: 50%; background: rgba(113, 27, 40, .66); transform: rotate(15deg); }
+.foto-carrossel-real::before, .foto-carrossel-real::after { display: none; }
+.imagem-carrossel-ong { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.carrossel-sem-imagens { position: absolute; inset: 0; display: grid; place-items: center; margin: 0; padding: 20px; color: #780b12; text-align: center; }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; clip-path: inset(50%); }
+.placeholder-foto-ativa {
+	opacity: 1;
+}
+
+.foto-2 { background: #c39058; }
+.foto-3 { background: #876572; }
+.seta { position: absolute; z-index: 1; top: 50%; width: 48px; height: 48px; border: 0; border-radius: 50%; color: #fff8f2; background: #780b12; cursor: pointer; font-size: 38px; line-height: 29px; transform: translateY(-50%); }
+.seta:hover { background: #9b2b32; }
+.seta-esquerda { left: 16px; }
+.seta-direita { right: 16px; }
+.indicadores { position: absolute; z-index: 1; left: 50%; bottom: 18px; display: flex; gap: 10px; padding: 8px 15px; border-radius: 25px; background: rgba(255, 248, 242, .88); transform: translateX(-50%); }
+.indicador { width: 8px; height: 8px; padding: 0; border: 0; border-radius: 50%; background: #d5aaa8; cursor: pointer; }
+.indicador.ativo { background: #780b12; }
+
+@media (prefers-reduced-motion: reduce) {
+	.placeholder-foto { transition: none; }
+}

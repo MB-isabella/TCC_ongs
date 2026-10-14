@@ -1,0 +1,312 @@
+.pagina-edicao-usuario,
+.pagina-edicao-usuario input,
+.pagina-edicao-usuario button {
+	font-family: 'Poppins', sans-serif;
+}
+
+.painel-edicao-usuario {
+	padding-top: 14px;
+}
+
+.cabecalho-edicao-usuario {
+	position: relative;
+	min-height: 166px;
+	gap: 28px;
+	margin-bottom: 20px;
+	padding: 18px 24px;
+}
+
+.grupo-foto-edicao-usuario {
+	position: relative;
+	flex: 0 0 auto;
+}
+
+.grupo-foto-edicao-usuario .moldura-foto-perfil-usuario {
+	width: 142px;
+	height: 142px;
+}
+
+.entrada-imagem-edicao-usuario {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	clip-path: inset(50%);
+	white-space: nowrap;
+}
+
+.botao-lapis-foto-edicao-usuario {
+	position: absolute;
+	right: -6px;
+	bottom: 3px;
+	width: 40px;
+	height: 40px;
+	display: grid;
+	place-items: center;
+	padding: 5px;
+	border: 0;
+	border-radius: 50%;
+	background: #fff;
+	cursor: pointer;
+}
+
+.botao-lapis-foto-edicao-usuario img,
+.campo-login-edicao-usuario button img,
+.linha-campo-edicao-usuario button img {
+	width: 27px;
+	height: 27px;
+	object-fit: contain;
+}
+
+.botao-lapis-foto-edicao-usuario:focus-visible,
+.campo-login-edicao-usuario button:focus-visible,
+.linha-campo-edicao-usuario button:focus-visible {
+	outline: 2px solid #700d11;
+	outline-offset: 2px;
+}
+
+.campo-login-edicao-usuario {
+	width: min(100%, 304px);
+	min-height: 58px;
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	padding: 8px 14px 8px 20px;
+	border-radius: 8px;
+	background: #fff;
+	box-shadow: 0 4px 15px rgba(50, 0, 0, .08);
+}
+
+.campo-login-edicao-usuario input {
+	width: 100%;
+	min-width: 0;
+	padding: 0;
+	border: 0;
+	outline: 0;
+	color: #700d11;
+	background: transparent;
+	font-size: clamp(18px, 2.5vw, 25px);
+	font-weight: 700;
+}
+
+.campo-login-edicao-usuario input:focus-visible {
+	box-shadow: 0 2px 0 #a94a50;
+}
+
+.campo-login-edicao-usuario button,
+.linha-campo-edicao-usuario button {
+	flex: 0 0 auto;
+	display: grid;
+	place-items: center;
+	padding: 4px;
+	border: 0;
+	background: transparent;
+	cursor: pointer;
+}
+
+.botao-cancelar-edicao-usuario,
+.acoes-edicao-usuario button {
+	min-width: 148px;
+	min-height: 42px;
+	border: 0;
+	border-radius: 5px;
+	color: #fff;
+	background: linear-gradient(105deg, #650800 0%, #a91512 52%, #650800 100%);
+	font-size: 14px;
+	font-weight: 600;
+	cursor: pointer;
+	transition: filter .16s ease, opacity .16s ease;
+}
+
+.botao-cancelar-edicao-usuario {
+	position: absolute;
+	top: 12px;
+	right: 24px;
+}
+
+.formulario-edicao-usuario {
+	display: flex;
+	flex-direction: column;
+	gap: 4px;
+}
+
+.linha-campo-edicao-usuario {
+	min-height: 56px;
+	display: grid;
+	grid-template-columns: minmax(115px, 145px) minmax(0, 1fr) 34px;
+	align-items: center;
+	gap: 10px;
+	padding: 8px clamp(22px, 5.5vw, 50px);
+	border-radius: 14px;
+	background: #fff;
+	box-shadow: 0 3px 11px rgba(50, 0, 0, .06);
+	color: #8d292d;
+	font-size: 14px;
+}
+
+.linha-campo-edicao-usuario label {
+	color: #700d11;
+	font-weight: 400;
+}
+
+.linha-campo-edicao-usuario input,
+.linha-senhas-edicao-usuario input {
+	width: 100%;
+	min-width: 0;
+	height: 31px;
+	padding: 0 10px;
+	border: 1px solid transparent;
+	border-radius: 8px;
+	outline: 0;
+	color: #6e2529;
+	background: #eedddd;
+	font-size: 13px;
+	font-style: italic;
+}
+
+.linha-campo-edicao-usuario input:focus,
+.linha-senhas-edicao-usuario input:focus {
+	border-color: #a94a50;
+	box-shadow: 0 0 0 3px rgba(169, 74, 80, .12);
+}
+
+.linha-campo-edicao-usuario input:disabled,
+.linha-senhas-edicao-usuario input:disabled {
+	opacity: .65;
+}
+
+.linha-senhas-edicao-usuario {
+	min-height: 58px;
+	display: grid;
+	grid-template-columns: minmax(105px, 1fr) minmax(82px, auto) minmax(105px, .8fr) minmax(112px, auto) minmax(105px, .8fr);
+	align-items: center;
+	gap: 12px;
+	padding: 8px clamp(22px, 5.5vw, 50px);
+	border-radius: 14px;
+	background: #fff;
+	box-shadow: 0 3px 11px rgba(50, 0, 0, .06);
+	color: #700d11;
+	font-size: 13px;
+}
+
+.linha-senhas-edicao-usuario strong {
+	font-weight: 400;
+}
+
+.acoes-edicao-usuario {
+	display: flex;
+	justify-content: flex-end;
+	margin-top: auto;
+	padding: 18px clamp(20px, 2.5vw, 24px);
+}
+
+.acoes-edicao-usuario button:disabled {
+	cursor: wait;
+	opacity: .7;
+}
+
+.mensagem-edicao-usuario,
+.estado-edicao-usuario {
+	margin: 0 20px 8px;
+	color: #27683b;
+	font-size: 13px;
+}
+
+.erro-edicao-usuario {
+	color: #a42027;
+}
+
+.sr-only-edicao-usuario {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	white-space: nowrap;
+	clip-path: inset(50%);
+}
+
+@media (max-width: 760px) {
+	.linha-senhas-edicao-usuario {
+		grid-template-columns: minmax(100px, 1fr) minmax(95px, 1fr);
+		gap: 8px 12px;
+	}
+
+	.linha-senhas-edicao-usuario strong {
+		grid-column: 1 / -1;
+	}
+}
+
+@media (max-width: 600px) {
+	.cabecalho-edicao-usuario {
+		min-height: 138px;
+		gap: 14px;
+		margin-inline: 8px;
+		padding: 16px 12px;
+	}
+
+	.grupo-foto-edicao-usuario .moldura-foto-perfil-usuario {
+		width: 104px;
+		height: 104px;
+		border-width: 5px;
+	}
+
+	.botao-lapis-foto-edicao-usuario {
+		right: -6px;
+		bottom: 0;
+		width: 34px;
+		height: 34px;
+	}
+
+	.botao-lapis-foto-edicao-usuario img,
+	.campo-login-edicao-usuario button img {
+		width: 23px;
+		height: 23px;
+	}
+
+	.campo-login-edicao-usuario {
+		min-height: 50px;
+		gap: 4px;
+		padding: 7px 8px;
+	}
+
+	.campo-login-edicao-usuario input {
+		font-size: 17px;
+	}
+
+	.botao-cancelar-edicao-usuario {
+		top: 10px;
+		right: 10px;
+		min-width: 96px;
+		min-height: 36px;
+		font-size: 12px;
+	}
+
+	.linha-campo-edicao-usuario {
+		grid-template-columns: 1fr 34px;
+		gap: 5px 10px;
+		padding: 10px 18px;
+	}
+
+	.linha-campo-edicao-usuario label {
+		grid-column: 1 / -1;
+	}
+
+	.linha-senhas-edicao-usuario {
+		grid-template-columns: 1fr;
+		padding: 12px 18px;
+	}
+
+	.linha-senhas-edicao-usuario strong {
+		grid-column: auto;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.botao-cancelar-edicao-usuario,
+	.acoes-edicao-usuario button {
+		transition: none;
+	}
+}

@@ -31,8 +31,8 @@ export default function LoginOng() {
 			}
 
 			localStorage.setItem('token', dados.token);
-			window.alert('Login realizado com sucesso!');
-			navigate('/catalogo');
+			localStorage.setItem('tipoConta', 'ong');
+			navigate('/perfil-ong-proprietario', { replace: true });
 		} catch (erro) {
 			setMensagem(erro.message || 'Erro ao conectar com o servidor');
 		} finally {
@@ -44,7 +44,9 @@ export default function LoginOng() {
 		<main className="pagina-login-ong">
 			<section className="painel-login-ong">
 				<div className="lado-formulario-login">
-					<Link to="/" className="logo-login" aria-label="Voltar para o início">♡</Link>
+					<Link to="/" className="logo-login" aria-label="Voltar para o início">
+						<img src="/images/logovermelha.PNG" alt="" />
+					</Link>
 					<div className="cabecalho-login">
 						<p>Bem-vindo de volta!</p>
 						<h1>Login da ONG</h1>
@@ -61,9 +63,9 @@ export default function LoginOng() {
 							<img className="icone-cadeado" src="/images/cadeado.png" alt="" />
 							<input id="senha-ong" type="password" value={senha} onChange={(evento) => setSenha(evento.target.value)} required />
 						</div>
-						<Link to="#" className="recuperar-senha">Esqueci minha senha</Link>
+						<Link to="/recuperacao-senha" className="recuperar-senha">Esqueci minha senha</Link>
 						{mensagem && <p className="mensagem-login" role="alert">{mensagem}</p>}
-						<button type="submit" className="botao-entrar" disabled={carregando}>
+						<button type="submit" className="botao-entrar hover-botao-vermelho" disabled={carregando}>
 							<span>{carregando ? 'Entrando...' : 'Entrar'}</span>
 							<span aria-hidden="true">➜</span>
 						</button>
@@ -76,11 +78,11 @@ export default function LoginOng() {
 						<p>Não possui uma conta?</p>
 						<h2>Cadastre-se<br />agora!</h2>
 						<div className="botoes-cadastro">
-							<Link to="/cadastro-usuario" className="botao-cadastro">
+							<Link to="/cadastro-usuario" className="botao-cadastro hover-botao-vermelho">
 								<img src="/images/cadastrousuario.png" alt="" />
 								<span>Cadastrar usuário</span>
 							</Link>
-							<Link to="/cadastro-ong" className="botao-cadastro">
+							<Link to="/cadastro-ong" className="botao-cadastro hover-botao-vermelho">
 								<img src="/images/iconeong.png" alt="" />
 								<span>Cadastrar ONG</span>
 							</Link>

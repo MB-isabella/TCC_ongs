@@ -1,9 +1,10 @@
 import { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import './LoginUsuario.css';
 
 export default function LoginUsuario() {
 	const navigate = useNavigate();
+	const location = useLocation();
 	const [email, setEmail] = useState('');
 	const [senha, setSenha] = useState('');
 	const [mensagem, setMensagem] = useState('');
@@ -31,8 +32,19 @@ export default function LoginUsuario() {
 			}
 
 			localStorage.setItem('token', dados.token);
-			window.alert('Login realizado com sucesso!');
-			navigate('/catalogo');
+			localStorage.setItem('tipoConta', 'usuario');
+			if (dados.imagem_perfil) {
+				localStorage.setItem('imagemPerfil', dados.imagem_perfil);
+			} else {
+				localStorage.removeItem('imagemPerfil');
+			}
+			const destino = location.state?.from;
+			const voltarParaDoacao = typeof destino?.pathname === 'string'
+				&& destino.pathname.startsWith('/doacao/');
+			navigate(
+				voltarParaDoacao ? `${destino.pathname}${destino.search || ''}` : '/catalogo',
+				{ replace: true }
+			);
 		} catch (erro) {
 			setMensagem(erro.message || 'Erro ao conectar com o servidor');
 		} finally {
@@ -44,7 +56,9 @@ export default function LoginUsuario() {
 		<main className="pagina-login-usuario">
 			<section className="painel-login-usuario">
 				<div className="lado-formulario-login">
-					<Link to="/" className="logo-login" aria-label="Voltar para o início">♡</Link>
+					<Link to="/" className="logo-login" aria-label="Voltar para o início">
+						<img src="/images/logovermelha.PNG" alt="" />
+					</Link>
 					<div className="cabecalho-login">
 						<p>Bem-vindo de volta!</p>
 						<h1>Login do usuário</h1>
@@ -61,9 +75,9 @@ export default function LoginUsuario() {
 							<img className="icone-cadeado" src="/images/cadeado.png" alt="" />
 							<input id="senha" type="password" value={senha} onChange={(evento) => setSenha(evento.target.value)} required />
 						</div>
-						<Link to="#" className="recuperar-senha">Esqueci minha senha</Link>
+						<Link to="/recuperacao-senha" className="recuperar-senha">Esqueci minha senha</Link>
 						{mensagem && <p className="mensagem-login" role="alert">{mensagem}</p>}
-						<button type="submit" className="botao-entrar" disabled={carregando}>
+						<button type="submit" className="botao-entrar hover-botao-vermelho" disabled={carregando}>
 							<span>{carregando ? 'Entrando...' : 'Entrar'}</span>
 							<span aria-hidden="true">➜</span>
 						</button>
@@ -76,11 +90,11 @@ export default function LoginUsuario() {
 						<p>Não possui uma conta?</p>
 						<h2>Cadastre-se<br />agora!</h2>
 						<div className="botoes-cadastro">
-							<Link to="/cadastro-usuario" className="botao-cadastro">
+							<Link to="/cadastro-usuario" className="botao-cadastro hover-botao-vermelho">
 								<img src="/images/cadastrousuario.png" alt="" />
 								<span>Cadastrar usuário</span>
 							</Link>
-							<Link to="/cadastro-ong" className="botao-cadastro">
+							<Link to="/cadastro-ong" className="botao-cadastro hover-botao-vermelho">
 								<img src="/images/iconeong.png" alt="" />
 								<span>Cadastrar ONG</span>
 							</Link>

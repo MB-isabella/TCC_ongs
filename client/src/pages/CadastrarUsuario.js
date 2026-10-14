@@ -68,12 +68,14 @@ export default function CadastrarUsuario() {
 			>
 				<div className="topo-lateral-cadastro">
 					<Link to="/" className="voltar-cadastro">Voltar para o início</Link>
-					<Link to="/" className="marca-cadastro" aria-label="Página inicial">♡</Link>
+					<Link to="/" className="marca-cadastro" aria-label="Página inicial">
+						<img src="/images/logobranca.PNG" alt="" />
+					</Link>
 				</div>
 				<div className="chamada-lateral-cadastro">
 					<p>Já tem uma conta?</p>
 					<h2>Bem-vindo de<br />volta!</h2>
-					<Link to="/login-usuario" className="botao-login-cadastro">Entrar</Link>
+					<Link to="/login-usuario" className="botao-login-cadastro hover-botao-vermelho">Entrar</Link>
 				</div>
 			</aside>
 
@@ -104,7 +106,7 @@ export default function CadastrarUsuario() {
 					</label>
 
 					{mensagem && <p className="mensagem-cadastro-usuario" role="status">{mensagem}</p>}
-					<button className="botao-enviar-cadastro" type="submit" disabled={carregando}>
+					<button className="botao-enviar-cadastro hover-botao-vermelho" type="submit" disabled={carregando}>
 						{carregando ? 'Enviando...' : 'cadastrar'}
 					</button>
 				</form>

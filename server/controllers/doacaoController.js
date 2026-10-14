@@ -30,7 +30,8 @@ const getInfoOng = async (req, res) => {
 
 const gerarDoacao = async (req, res) => {
   try {
-    const { usuarioId, ongId } = req.body;
+    const usuarioId = req.userId;
+    const ongId = req.params.id;
 
     if (!usuarioId || !ongId) {
       return res.status(400).json({ message: 'Usuário e ONG são obrigatórios' });
@@ -68,4 +69,3 @@ module.exports = {
   getInfoOng,
   gerarDoacao
 };
-

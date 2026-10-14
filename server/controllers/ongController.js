@@ -2,6 +2,7 @@ const bcrypt = require('bcryptjs');
 const { uploadToCloudinary } = require('../routes/cloudinary');
 const jwt = require('jsonwebtoken');
 const Ong = require('../models/ong');
+const Doacao = require('../models/doacao');
 const { JWT_SECRET } = require('../config');
 
 // Realizar login
@@ -175,7 +176,7 @@ const registrarOng = async (req, res) => {
 
 const editarOng = async (req, res) => {
   const { id } = req.params;
-  const { nome, login, email, senha, cnpj, cidade_regiao, categoria, logo, banner, carrossel, qrcode, chave_pix, instagram,
+  const { nome, login, email, senha, cnpj, cidade_regiao, categoria, descricao, logo, banner, qrcode, chave_pix, instagram,
     fotos_remover // Array de URLs das fotos que o usuário deseja EXCLUIR do carrossel ex: ["https://res.cloudinary..."]
   } = req.body;
 
@@ -191,65 +192,50 @@ const editarOng = async (req, res) => {
       ongEditar.senha = await bcrypt.hash(senha, salt);
     }
 
-    // 2. UPLOADS INDIVIDUAIS (Logo, Banner, QR Code)
-    if (req.files) {
-      if (req.files['logo'] && req.files['logo'][0]) {
-        const uploadLogo = await uploadToCloudinary(req.files['logo'][0].path);
-        ongEditar.logo = uploadLogo.secure_url;
-      } else if (logo) {
-        ongEditar.logo = logo;
-      }
-
-      if (req.files['banner'] && req.files['banner'][0]) {
-        const uploadBanner = await uploadToCloudinary(req.files['banner'][0].path);
-        ongEditar.banner = uploadBanner.secure_url;
-      } else if (banner) {
-        ongEditar.banner = banner;
-      }
-
-      if (req.files['qrcode'] && req.files['qrcode'][0]) {
-        const uploadQrCode = await uploadToCloudinary(req.files['qrcode'][0].path);
-        ongEditar.qrcode = uploadQrCode.secure_url;
-      } else if (qrcode) {
-        ongEditar.qrcode = qrcode;
-      }
-    } else {
-      // Se não houver envio de arquivos novos pelo req.files, atualiza se forem passadas strings no req.body
-      if (logo) ongEditar.logo = logo;
-      if (banner) ongEditar.banner = banner;
-      if (qrcode) ongEditar.qrcode = qrcode;
+    const arquivos = req.files || {};
+    const urlsParaRemover = fotos_remover
+      ? (Array.isArray(fotos_remover) ? fotos_remover : [fotos_remover])
+      : [];
+    const carrosselAtualizado = (ongEditar.carrossel || [])
+      .filter((urlExistente) => !urlsParaRemover.includes(urlExistente));
+    const arquivosCarrossel = arquivos.carrossel || [];
+    if (carrosselAtualizado.length + arquivosCarrossel.length > 5) {
+      return res.status(400).json({ mensagem: 'O carrossel pode conter no máximo 5 imagens.' });
+    }
+    if (carrosselAtualizado.length + arquivosCarrossel.length < 1) {
+      return res.status(400).json({ mensagem: 'O carrossel precisa conter pelo menos 1 imagem.' });
     }
 
-    // 3. REMOVER FOTOS ESPECÍFICAS DO CARROSSEL
-    if (fotos_remover) {
-      // Aceita tanto uma string única quanto um array de URLs
-      const urlsParaRemover = Array.isArray(fotos_remover) ? fotos_remover : [fotos_remover];
-      
-      ongEditar.carrossel = ongEditar.carrossel.filter(
-        (urlExistente) => !urlsParaRemover.includes(urlExistente)
-      );
+    const enviarImagem = (arquivo) => uploadToCloudinary(arquivo.buffer, arquivo.originalname);
+    const [logoEnviada, bannerEnviado, qrCodeEnviado] = await Promise.all([
+      arquivos.logo?.[0] ? enviarImagem(arquivos.logo[0]) : null,
+      arquivos.banner?.[0] ? enviarImagem(arquivos.banner[0]) : null,
+      arquivos.qrcode?.[0] ? enviarImagem(arquivos.qrcode[0]) : null,
+    ]);
+
+    if (logoEnviada) ongEditar.logo = logoEnviada.secure_url;
+    if (bannerEnviado) ongEditar.banner = bannerEnviado.secure_url;
+    if (qrCodeEnviado) ongEditar.qrcode = qrCodeEnviado.secure_url;
+    if (logo) ongEditar.logo = logo;
+    if (banner) ongEditar.banner = banner;
+    if (qrcode) ongEditar.qrcode = qrcode;
+
+    const imagensNovas = await Promise.all(arquivosCarrossel.map(enviarImagem));
+    ongEditar.carrossel = [
+      ...carrosselAtualizado,
+      ...imagensNovas.map((imagem) => imagem.secure_url),
+    ];
+    if (nome !== undefined) ongEditar.nome = nome;
+    if (login !== undefined) ongEditar.login = login;
+    if (email !== undefined) ongEditar.email = email;
+    if (cnpj !== undefined) ongEditar.cnpj = cnpj;
+    if (cidade_regiao !== undefined) ongEditar.cidade_regiao = cidade_regiao;
+    if (categoria !== undefined) {
+      ongEditar.categoria = Array.isArray(categoria) ? categoria : [categoria];
     }
-
-    // 4. ADICIONAR NOVAS FOTOS AO CARROSSEL (acumula com as que já existem)
-    if (req.files && req.files['carrossel'] && req.files['carrossel'].length > 0) {
-      const uploadsNovos = await Promise.all(
-        req.files['carrossel'].map((file) => uploadToCloudinary(file.path))
-      );
-      const novasUrls = uploadsNovos.map((item) => item.secure_url);
-
-      // Adiciona as novas imagens mantendo as antigas que não foram removidas
-      ongEditar.carrossel.push(...novasUrls);
-    }
-
-    // 5. Atualização dos demais campos de texto
-    if (nome) ongEditar.nome = nome;
-    if (login) ongEditar.login = login;
-    if (email) ongEditar.email = email;
-    if (cnpj) ongEditar.cnpj = cnpj;
-    if (cidade_regiao) ongEditar.cidade_regiao = cidade_regiao;
-    if (categoria) ongEditar.categoria = categoria;
-    if (chave_pix) ongEditar.chave_pix = chave_pix;
-    if (instagram) ongEditar.instagram = instagram;
+    if (descricao !== undefined) ongEditar.descricao = descricao;
+    if (chave_pix !== undefined) ongEditar.chave_pix = chave_pix;
+    if (instagram !== undefined) ongEditar.instagram = instagram;
 
     await ongEditar.save();
 
@@ -262,9 +248,26 @@ const editarOng = async (req, res) => {
 
 const deletarOng = async (req, res) => {
   const { id } = req.params;
+  const { senha } = req.body;
 
   try {
-    const ongDeletar = await Ong.findOneAndDelete({ _id: id });
+    if (typeof senha !== 'string' || senha.length === 0) {
+      return res.status(400).json({ mensagem: 'A senha é obrigatória para deletar a ONG' });
+    }
+
+    const ong = await Ong.findById(id);
+
+    if (!ong) {
+      return res.status(404).json({ mensagem: 'Ong não encontrada' });
+    }
+
+    const senhaValida = await bcrypt.compare(senha, ong.senha);
+
+    if (!senhaValida) {
+      return res.status(400).json({ mensagem: 'Senha inválida' });
+    }
+
+    const ongDeletar = await Ong.findOneAndDelete({ _id: id, senha: ong.senha });
 
     if (!ongDeletar) {
       return res.status(404).json({ mensagem: 'Ong não encontrada' });
@@ -285,25 +288,22 @@ const getPerfilOngsProprietario = async (req, res) => {
       return res.status(400).json({ message: 'ID da ONG é obrigatório' });
     }
 
-    const ong = await Ong.findById(id).select('nome email cnpj cidade_regiao categoria banner logo carrossel instagram');
+    const ong = await Ong.findById(id).select('-senha').lean();
 
     if (!ong) {
       return res.status(404).json({ message: 'ONG não encontrada' });
     }
 
+    const doacoes = await Doacao.find({ ong: ong._id })
+      .select('createdAt')
+      .sort({ createdAt: -1 })
+      .lean();
+
     res.json({
+      ...ong,
       id: ong._id,
-      nome: ong.nome,
-      email: ong.email,
-      cnpj: ong.cnpj,
-      cidade_regiao: ong.cidade_regiao,
-      categoria: ong.categoria,
-      banner: ong.banner,
-      logo: ong.logo,
-      carrossel: ong.carrossel,
-      instagram: ong.instagram,
-      qrcode: ong.qrcode,
-      chave_pix: ong.chave_pix
+      quantidadeDoacoes: doacoes.length,
+      datasDoacoes: doacoes.map((doacao) => doacao.createdAt)
     });
   } catch (error) {
     console.error(error);

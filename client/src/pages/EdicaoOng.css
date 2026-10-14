@@ -1,0 +1,652 @@
+.pagina-edicao-ong {
+	min-height: 100vh;
+	color: #700d11;
+	background: linear-gradient(180deg, #59090d 0 72%, #32070a 72% 100%);
+	font-family: 'Inter', sans-serif;
+}
+
+.painel-edicao-ong {
+	min-height: calc(100vh - 175px);
+	padding: 18px clamp(20px, 4vw, 54px) 25px;
+	border-radius: 16px;
+	background: #fffdfd;
+	box-shadow: 0 12px 32px rgba(35, 1, 3, .08);
+}
+
+.cabecalho-edicao-ong {
+	position: relative;
+	height: clamp(100px, 13vw, 160px);
+	display: flex;
+	justify-content: center;
+	border-radius: 9px;
+	background: #e8babb;
+	box-shadow: 0 6px 14px rgba(76, 5, 8, .12);
+}
+
+.banner-preview-edicao-ong {
+	position: absolute;
+	inset: 0;
+	width: 100%;
+	height: 100%;
+	border-radius: inherit;
+	object-fit: cover;
+}
+
+.botao-cancelar-edicao-ong {
+	position: absolute;
+	z-index: 2;
+	top: 5px;
+	right: 7px;
+	min-width: 84px;
+	min-height: 29px;
+	padding: 5px 11px;
+	border: 0;
+	border-radius: 3px;
+	color: #fff;
+	background: linear-gradient(105deg, #4f0508, #921316);
+	font: inherit;
+	font-size: 11px;
+	cursor: pointer;
+}
+
+.logo-edicao-ong {
+	position: absolute;
+	z-index: 2;
+	bottom: -25px;
+	left: 50%;
+	width: clamp(108px, 13vw, 132px);
+	height: clamp(108px, 13vw, 132px);
+	transform: translateX(-50%);
+}
+
+.logo-edicao-ong > img {
+	width: 100%;
+	height: 100%;
+	border: 5px solid #fff;
+	border-radius: 50%;
+	background: #700d11;
+	object-fit: cover;
+}
+
+.logo-edicao-ong > button,
+.botao-lapis-banner-edicao-ong,
+.botao-lapis-galeria-edicao-ong,
+.preview-qrcode-edicao-ong > button {
+	position: absolute;
+	z-index: 3;
+	width: 29px;
+	height: 29px;
+	display: grid;
+	place-items: center;
+	padding: 4px;
+	border: 0;
+	border-radius: 50%;
+	background: #fff;
+	cursor: pointer;
+	box-shadow: 0 1px 5px rgba(50, 0, 0, .12);
+}
+
+.logo-edicao-ong > button {
+	right: -4px;
+	bottom: 2px;
+}
+
+.logo-edicao-ong > button img,
+.botao-lapis-banner-edicao-ong img,
+.botao-lapis-galeria-edicao-ong img,
+.preview-qrcode-edicao-ong > button img {
+	width: 100%;
+	height: 100%;
+	object-fit: contain;
+}
+
+.botao-lapis-banner-edicao-ong {
+	top: 50%;
+	left: 5px;
+	transform: translateY(-50%);
+}
+
+.input-arquivo-edicao-ong {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	clip-path: inset(50%);
+	white-space: nowrap;
+}
+
+.identidade-form-edicao-ong {
+	width: min(100%, 520px);
+	display: grid;
+	gap: 7px;
+	margin: 34px auto 10px;
+}
+
+.campo-edicao-ong {
+	min-width: 0;
+}
+
+.identidade-form-edicao-ong > .campo-edicao-ong {
+	position: relative;
+}
+
+.identidade-form-edicao-ong > .campo-edicao-ong > label {
+	display: none;
+}
+
+.identidade-form-edicao-ong > .campo-edicao-ong:first-child input {
+	height: 35px;
+	padding-left: 22px;
+	font-size: 16px;
+	font-style: italic;
+}
+
+.identidade-form-edicao-ong > .campo-edicao-ong:nth-child(2) input {
+	height: 29px;
+	padding-left: 10px;
+	font-size: 12px;
+	font-style: italic;
+}
+
+.entrada-edicao-ong {
+	position: relative;
+	min-width: 0;
+}
+
+.entrada-edicao-ong > input,
+.entrada-edicao-ong > textarea {
+	width: 100%;
+	min-width: 0;
+	padding: 7px 34px 7px 10px;
+	border: 1px solid transparent;
+	border-radius: 6px;
+	outline: 0;
+	color: #721117;
+	background: #f0dddd;
+	font: inherit;
+	font-size: 12px;
+}
+
+.identidade-form-edicao-ong .entrada-edicao-ong > input {
+	background: #fff;
+	box-shadow: 0 3px 12px rgba(50, 0, 0, .07);
+}
+
+.entrada-edicao-ong > input:focus,
+.entrada-edicao-ong > textarea:focus {
+	border-color: #b66a6e;
+	box-shadow: 0 0 0 3px rgba(169, 74, 80, .12);
+}
+
+.entrada-edicao-ong > textarea {
+	min-height: 0;
+	height: 100%;
+	resize: vertical;
+	line-height: 1.45;
+}
+
+.lapis-campo-edicao-ong {
+	position: absolute;
+	top: 50%;
+	right: 7px;
+	width: 20px;
+	height: 20px;
+	pointer-events: none;
+	object-fit: contain;
+	transform: translateY(-50%);
+}
+
+.dados-form-edicao-ong {
+	display: grid;
+	grid-template-columns: repeat(4, minmax(0, 1fr));
+	gap: 10px;
+	padding: 7px 12px 12px;
+	border-top: 1px solid #efcfd1;
+}
+
+.dados-form-edicao-ong .campo-edicao-ong > label,
+.campo-imagem-edicao-ong > label {
+	min-height: 19px;
+	display: flex;
+	align-items: center;
+	gap: 4px;
+	margin-bottom: 3px;
+	color: #812125;
+	font-size: 11px;
+}
+
+.dados-form-edicao-ong .campo-edicao-ong > label img {
+	width: 14px;
+	height: 14px;
+	object-fit: contain;
+}
+
+.detalhes-form-edicao-ong {
+	display: grid;
+	grid-template-columns: minmax(0, .95fr) minmax(0, 1fr);
+	align-items: stretch;
+	gap: 12px;
+	margin-top: 2px;
+}
+
+.campo-descricao-edicao-ong {
+	min-height: 165px;
+	padding: 12px;
+	border-radius: 9px;
+	background: #fff;
+	box-shadow: 0 4px 15px rgba(51, 4, 8, .1);
+}
+
+.campo-descricao-edicao-ong > label {
+	display: flex;
+	align-items: center;
+	gap: 6px;
+	margin-bottom: 8px;
+	color: #781117;
+	font-size: 13px;
+	font-weight: 600;
+}
+
+.campo-descricao-edicao-ong > label img {
+	width: 16px;
+	height: 16px;
+	object-fit: contain;
+}
+
+.campo-descricao-edicao-ong .entrada-edicao-ong {
+	height: calc(100% - 27px);
+}
+
+.galeria-edicao-ong {
+	position: relative;
+	min-width: 0;
+	min-height: 165px;
+	padding: 12px;
+	border-radius: 9px;
+	background: #e8babb;
+	box-shadow: 0 4px 15px rgba(51, 4, 8, .1);
+}
+
+.galeria-edicao-ong h2 {
+	margin: 0 36px 10px 0;
+	color: #721117;
+	font-size: 12px;
+	font-weight: 500;
+}
+
+.botao-lapis-galeria-edicao-ong {
+	top: 8px;
+	right: 8px;
+	width: 25px;
+	height: 25px;
+}
+
+.botao-lapis-galeria-edicao-ong:disabled {
+	cursor: not-allowed;
+	opacity: .55;
+}
+
+.grade-fotos-edicao-ong {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(66px, 1fr));
+	gap: 7px;
+}
+
+.grade-fotos-edicao-ong > p {
+	grid-column: 1 / -1;
+	margin: 12px 0;
+	color: #781117;
+	font-size: 12px;
+}
+
+.foto-edicao-ong {
+	position: relative;
+	min-width: 0;
+	aspect-ratio: 1;
+	overflow: hidden;
+	border: 2px solid rgba(255, 255, 255, .8);
+	border-radius: 6px;
+	background: #f0dddd;
+}
+
+.foto-edicao-ong > img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+}
+
+.foto-edicao-ong > button {
+	position: absolute;
+	top: 2px;
+	right: 2px;
+	width: 22px;
+	height: 22px;
+	display: grid;
+	place-items: center;
+	padding: 0 0 2px;
+	border: 0;
+	border-radius: 50%;
+	color: #fff;
+	background: rgba(75, 5, 10, .88);
+	font: inherit;
+	font-size: 18px;
+	line-height: 1;
+	cursor: pointer;
+}
+
+.contador-fotos-edicao-ong {
+	display: block;
+	margin-top: 7px;
+	color: #781117;
+	font-size: 10px;
+	text-align: right;
+}
+
+.pagamento-form-edicao-ong {
+	display: grid;
+	grid-template-columns: minmax(100px, 125px) minmax(0, 1fr);
+	align-items: start;
+	gap: 14px;
+	margin-top: 12px;
+}
+
+.campo-imagem-edicao-ong > label {
+	font-size: 11px;
+}
+
+.preview-qrcode-edicao-ong {
+	position: relative;
+	width: 100%;
+	aspect-ratio: 1;
+	overflow: hidden;
+	border-radius: 5px;
+	background: #f0dddd;
+}
+
+.botao-imagem-qrcode-edicao-ong {
+	position: absolute;
+	inset: 0;
+	width: 100%;
+	height: 100%;
+	display: block;
+	padding: 0;
+	overflow: hidden;
+	border: 0;
+	background: transparent;
+	cursor: pointer;
+}
+
+.botao-imagem-qrcode-edicao-ong > img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	transition: filter .18s ease;
+}
+
+.botao-imagem-qrcode-edicao-ong:hover > img {
+	filter: brightness(.78);
+}
+
+.preview-qrcode-edicao-ong > .botao-lapis-qrcode-edicao-ong {
+	right: 5px;
+	bottom: 5px;
+	width: 25px;
+	height: 25px;
+}
+
+.pagamento-form-edicao-ong > .campo-edicao-ong > label {
+	min-height: 19px;
+	display: flex;
+	align-items: center;
+	margin-bottom: 3px;
+	color: #812125;
+	font-size: 11px;
+}
+
+.pagamento-form-edicao-ong > .campo-edicao-ong .entrada-edicao-ong input {
+	max-width: 240px;
+}
+
+.acoes-form-edicao-ong {
+	display: flex;
+	justify-content: flex-end;
+	margin-top: -30px;
+}
+
+.acoes-form-edicao-ong > button {
+	min-width: 92px;
+	min-height: 35px;
+	padding: 7px 18px;
+	border: 0;
+	border-radius: 4px;
+	color: #fff;
+	background: linear-gradient(105deg, #4f0508, #921316);
+	font: inherit;
+	font-size: 13px;
+	font-weight: 600;
+	cursor: pointer;
+	transition: filter .16s ease, opacity .16s ease;
+}
+
+.acoes-form-edicao-ong > button:disabled {
+	cursor: wait;
+	opacity: .7;
+}
+
+.mensagem-edicao-ong,
+.status-edicao-ong {
+	margin: 8px 0;
+	color: #75494b;
+	font-size: 13px;
+}
+
+.erro-edicao-ong {
+	color: #a42027;
+}
+
+.botao-cancelar-edicao-ong:focus-visible,
+.botao-lapis-banner-edicao-ong:focus-visible,
+.logo-edicao-ong > button:focus-visible,
+.botao-lapis-galeria-edicao-ong:focus-visible,
+.preview-qrcode-edicao-ong > button:focus-visible,
+.botao-imagem-qrcode-edicao-ong:focus-visible,
+.foto-edicao-ong > button:focus-visible,
+.acoes-form-edicao-ong > button:focus-visible {
+	outline: 2px solid #700d11;
+	outline-offset: 2px;
+}
+
+@media (max-width: 700px) {
+	.painel-edicao-ong {
+		padding-inline: 18px;
+	}
+
+	.dados-form-edicao-ong {
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: 8px;
+	}
+
+	.detalhes-form-edicao-ong {
+		grid-template-columns: 1fr;
+	}
+
+	.campo-descricao-edicao-ong,
+	.galeria-edicao-ong {
+		min-height: 150px;
+	}
+
+	.acoes-form-edicao-ong {
+		margin-top: 12px;
+	}
+}
+
+@media (max-width: 430px) {
+	.cabecalho-edicao-ong {
+		height: clamp(100px, 13vw, 130px);
+	}
+
+	.logo-edicao-ong {
+		width: 88px;
+		height: 88px;
+		bottom: -18px;
+	}
+
+	.identidade-form-edicao-ong {
+		margin-top: 26px;
+	}
+
+	.dados-form-edicao-ong {
+		padding-right: 8px;
+		padding-left: 8px;
+	}
+
+	.pagamento-form-edicao-ong {
+		grid-template-columns: minmax(90px, 110px) minmax(0, 1fr);
+		gap: 10px;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.acoes-form-edicao-ong > button {
+		transition: none;
+	}
+}
+
+.botao-imagem-banner-edicao-ong {
+	z-index: 1;
+	display: block;
+	padding: 0;
+	overflow: hidden;
+	border: 0;
+	background: transparent;
+	cursor: pointer;
+}
+
+.botao-imagem-banner-edicao-ong > img,
+.botao-imagem-banner-edicao-ong > span {
+	width: 100%;
+	height: 100%;
+	display: block;
+	object-fit: cover;
+	transition: filter .18s ease;
+}
+
+.botao-imagem-banner-edicao-ong:hover > img,
+.botao-imagem-banner-edicao-ong:hover > span,
+.botao-imagem-logo-edicao-ong:hover > img,
+.botao-imagem-qrcode-edicao-ong:hover > img {
+	filter: brightness(.78);
+}
+
+.logo-edicao-ong > .botao-imagem-logo-edicao-ong {
+	position: absolute;
+	inset: 0;
+	z-index: 2;
+	width: 100%;
+	height: 100%;
+	display: block;
+	padding: 0;
+	overflow: hidden;
+	border: 5px solid #fff;
+	border-radius: 50%;
+	background: #700d11;
+	cursor: pointer;
+	box-shadow: 0 2px 7px rgba(40, 0, 0, .18);
+}
+
+.logo-edicao-ong > .botao-imagem-logo-edicao-ong > img {
+	width: 100%;
+	height: 100%;
+	display: block;
+	border-radius: 50%;
+	object-fit: cover;
+	transition: filter .18s ease;
+}
+
+.logo-edicao-ong > .botao-lapis-logo-edicao-ong {
+	right: -4px;
+	bottom: 2px;
+	z-index: 4;
+}
+
+.botao-cancelar-edicao-ong {
+	min-width: 132px;
+	min-height: 46px;
+	padding: 9px 18px;
+	font-size: 16px;
+}
+
+.acoes-form-edicao-ong > button {
+	min-width: 132px;
+	min-height: 46px;
+	padding: 9px 22px;
+	font-size: 16px;
+}
+
+.identidade-form-edicao-ong > .campo-edicao-ong:first-child input {
+	height: 45px;
+	font-size: 20px;
+}
+
+.identidade-form-edicao-ong > .campo-edicao-ong:nth-child(2) input {
+	height: 36px;
+	font-size: 16px;
+}
+
+.entrada-edicao-ong > input,
+.entrada-edicao-ong > textarea {
+	font-size: 15px;
+}
+
+.dados-form-edicao-ong .campo-edicao-ong > label,
+.campo-imagem-edicao-ong > label,
+.pagamento-form-edicao-ong > .campo-edicao-ong > label {
+	font-size: 14px;
+}
+
+.campo-descricao-edicao-ong > label {
+	font-size: 16px;
+}
+
+.galeria-edicao-ong h2 {
+	font-size: 15px;
+}
+
+.grade-fotos-edicao-ong > p,
+.mensagem-edicao-ong,
+.status-edicao-ong {
+	font-size: 15px;
+}
+
+.contador-fotos-edicao-ong {
+	font-size: 13px;
+}
+
+@media (max-width: 620px) {
+	.botao-cancelar-edicao-ong {
+		min-width: 102px;
+		min-height: 38px;
+		padding: 7px 12px;
+		font-size: 14px;
+	}
+
+	.acoes-form-edicao-ong > button {
+		min-width: 116px;
+		min-height: 42px;
+		font-size: 15px;
+	}
+
+	.identidade-form-edicao-ong > .campo-edicao-ong:first-child input {
+		font-size: 18px;
+	}
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.botao-imagem-banner-edicao-ong > img,
+	.botao-imagem-banner-edicao-ong > span,
+	.botao-imagem-logo-edicao-ong > img,
+	.botao-imagem-qrcode-edicao-ong > img {
+		transition: none;
+	}
+}

@@ -1,12 +1,16 @@
 import './Footer.css';
 
-export default function Footer() {
+export default function Footer({ email }) {
 	return (
 		<footer className="footer">
 			<div className="footer-contatos">
-				<p>E-mail para contato: blabla@email.com</p>
-				<p>Telefone para contato: 67676767</p>
-				<p>oi algo? hihi</p>
+				<p>E-mail para contato: {email === undefined ? 'blabla@email.com' : email}</p>
+				{email === undefined && (
+					<>
+						<p>Telefone para contato: 67676767</p>
+						<p>oi algo? hihi</p>
+					</>
+				)}
 			</div>
 		</footer>
 	);

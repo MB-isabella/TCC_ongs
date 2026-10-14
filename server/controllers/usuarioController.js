@@ -2,6 +2,7 @@ const bcrypt = require('bcryptjs');
 const { uploadToCloudinary } = require('../routes/cloudinary');
 const jwt = require('jsonwebtoken');
 const Usuario = require('../models/usuario');
+const Doacao = require('../models/doacao');
 const { JWT_SECRET } = require('../config');
 
 // Realizar login
@@ -22,12 +23,16 @@ const loginUsuario = async (req, res) => {
     }
 
     const token = jwt.sign(
-      { userId: usuario._id, tipo: usuario.tipo },
+      { userId: usuario._id, tipo: 'usuario' },
       JWT_SECRET,
       { expiresIn: '2h' }
     );
 
-    res.json({ mensagem: 'Login bem-sucedido', token });
+    res.json({
+      mensagem: 'Login bem-sucedido',
+      token,
+      imagem_perfil: usuario.imagem_perfil || ''
+    });
   } catch (erro) {
     console.error(erro);
     res.status(500).json({ mensagem: 'Erro no servidor' });
@@ -103,7 +108,7 @@ const editarUsuario = async (req, res) => {
     // cloudinary
     let novaImagem = imagem_perfil;
   if (req.file) {
-    const resultadoUpload = await uploadToCloudinary(req.file.path);
+      const resultadoUpload = await uploadToCloudinary(req.file.buffer, req.file.originalname);
     novaImagem = resultadoUpload.secure_url;
   }
 
@@ -124,9 +129,29 @@ const editarUsuario = async (req, res) => {
 
 const deletarUsuario = async (req, res) => {
   const { id } = req.params;
+  const { senha } = req.body;
 
   try {
-    const usuarioDeletar = await Usuario.findOneAndDelete({ _id: id });
+    if (typeof senha !== 'string' || senha.length === 0) {
+      return res.status(400).json({ mensagem: 'A senha é obrigatória para deletar o usuário' });
+    }
+
+    const usuario = await Usuario.findById(id);
+
+    if (!usuario) {
+      return res.status(404).json({ mensagem: 'Usuário não encontrado' });
+    }
+
+    const senhaValida = await bcrypt.compare(senha, usuario.senha);
+
+    if (!senhaValida) {
+      return res.status(400).json({ mensagem: 'Senha inválida' });
+    }
+
+    const usuarioDeletar = await Usuario.findOneAndDelete({
+      _id: id,
+      senha: usuario.senha,
+    });
 
     if (!usuarioDeletar) {
       return res.status(404).json({ mensagem: 'Usuário não encontrado' });
@@ -153,12 +178,26 @@ const getPerfilUsuario = async (req, res) => {
       return res.status(404).json({ message: 'Usuário não encontrado' });
     }
 
+    const doacoes = await Doacao.find({ usuario: usuario._id })
+      .select('ong createdAt')
+      .populate('ong', 'nome logo')
+      .sort({ createdAt: -1 })
+      .lean();
+
     res.json({
       id: usuario._id,
       nome: usuario.nome,
       login: usuario.login,
       email: usuario.email,
-      imagem_perfil: usuario.imagem_perfil
+      imagem_perfil: usuario.imagem_perfil,
+      doacoes: doacoes.map((doacao) => ({
+        ong: doacao.ong ? {
+          id: doacao.ong._id,
+          nome: doacao.ong.nome,
+          logo: doacao.ong.logo
+        } : null,
+        data: doacao.createdAt
+      }))
     });
   } catch (error) {
     console.error(error);

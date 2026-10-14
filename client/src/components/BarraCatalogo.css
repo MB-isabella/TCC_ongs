@@ -1,0 +1,164 @@
+.barra-lateral-catalogo-compartilhada {
+	position: fixed;
+	z-index: 30;
+	inset: 0 auto 0 0;
+	width: 72px;
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	justify-content: space-between;
+	padding: 10px 0 18px;
+	color: #fff;
+	background: #57090e;
+}
+
+.icones-barra-catalogo-compartilhada {
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	gap: 24px;
+}
+
+.atalho-barra-catalogo-compartilhada {
+	width: 52px;
+	height: 52px;
+	display: grid;
+	place-items: center;
+	padding: 0;
+	border: 0;
+	border-radius: 6px;
+	color: #fff;
+	background: transparent;
+	text-decoration: none;
+	cursor: pointer;
+}
+
+.atalho-barra-catalogo-compartilhada > img {
+	width: 50px;
+	height: 50px;
+	border-radius: 20px;
+	object-fit: contain;
+}
+
+.atalho-barra-catalogo-compartilhada > .foto-perfil-barra-catalogo {
+	width: 44px;
+	height: 44px;
+	border: 2px solid #fff;
+	border-radius: 50%;
+	object-fit: cover;
+}
+
+.atalho-barra-catalogo-compartilhada > .imagem-perfil-barra-catalogo {
+	width: 50px;
+	height: 50px;
+	object-fit: contain;
+}
+
+.atalho-inicio-barra-catalogo-compartilhada {
+	width: 60px;
+	height: 60px;
+}
+
+.atalho-inicio-barra-catalogo-compartilhada > img {
+	width: 60px;
+	height: 60px;
+	border-radius: 25px;
+}
+
+.atalho-barra-catalogo-compartilhada:hover,
+.atalho-barra-catalogo-compartilhada:focus-visible {
+	background: rgba(255, 255, 255, .16);
+	outline: none;
+}
+
+.atalho-barra-catalogo-compartilhada svg {
+	width: 22px;
+	height: 22px;
+	fill: none;
+	stroke: currentColor;
+	stroke-linecap: round;
+	stroke-linejoin: round;
+	stroke-width: 1.8;
+}
+
+.sair-barra-catalogo-compartilhada {
+	position: relative;
+	margin-top: auto;
+}
+
+.sair-barra-catalogo-compartilhada::after {
+	position: absolute;
+	z-index: 5;
+	top: 50%;
+	left: calc(100% + 10px);
+	padding: 7px 10px;
+	border-radius: 5px;
+	color: #fff;
+	background: #3e0508;
+	content: 'Encerrar sessão';
+	font-size: 12px;
+	line-height: 1.2;
+	white-space: nowrap;
+	opacity: 0;
+	visibility: hidden;
+	transform: translateY(-50%);
+	transition: opacity .15s ease;
+}
+
+.sair-barra-catalogo-compartilhada:hover::after,
+.sair-barra-catalogo-compartilhada:focus-visible::after {
+	opacity: 1;
+	visibility: visible;
+}
+
+.topbar-catalogo-compartilhada {
+	position: fixed;
+	z-index: 20;
+	top: 0;
+	right: 0;
+	left: 0;
+	height: 48px;
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+	padding: 0 18px 0 88px;
+	color: #fff;
+	background: #57090e;
+}
+
+.conteudo-com-barra-catalogo {
+	min-height: 100vh;
+	margin-left: 72px;
+	padding-top: 48px;
+}
+
+.marca-catalogo-compartilhada,
+.marca-catalogo-compartilhada:visited,
+.marca-catalogo-compartilhada:hover,
+.marca-catalogo-compartilhada:focus {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	color: #fff;
+	font-family: 'Inter', sans-serif;
+	font-size: 16px;
+	font-weight: 700;
+	text-decoration: none;
+}
+
+.marca-catalogo-compartilhada span {
+	color: #fff;
+	font: inherit;
+}
+
+.marca-catalogo-compartilhada img {
+	width: 38px;
+	height: 38px;
+	object-fit: contain;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.sair-barra-catalogo-compartilhada::after {
+		transition: none;
+	}
+}
