@@ -4,7 +4,6 @@ import BarraCatalogo from '../components/BarraCatalogo';
 import CarrosselOngs from '../components/CarrosselOngs';
 import Footer from '../components/Footer';
 import { getDadosSessao, getPerfilOng, getPerfilUsuario } from '../services/catalogo';
-import './PerfilOng.css';
 
 export default function PerfilOng() {
 	const { id } = useParams();

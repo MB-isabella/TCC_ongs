@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { Link, Navigate, useNavigate } from 'react-router-dom';
 import { deletarUsuario, getDadosSessao } from '../services/catalogo';
-import './DeletarUsuario.css';
 
 export default function DeletarUsuario() {
 	const navigate = useNavigate();

@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import CarrosselOngs from '../components/CarrosselOngs';
 import Footer from '../components/Footer';
-import './TelaInicial.css';
 
 export default function TelaInicial() {
 	const [loginAberto, setLoginAberto] = useState(false);
@@ -16,7 +15,7 @@ export default function TelaInicial() {
 			<nav className="navbar-inicial" aria-label="Navegação principal">
 				<Link to="/" className="placeholder-icone" aria-label="Início">
 					<img src="/images/logobranca.PNG" alt="" />
-					<span>OngsTorres</span>
+					<span>UniLinorte</span>
 				</Link>
 				<div className="links-navbar">
 					<Link to="/" className="link-navbar">Início</Link>

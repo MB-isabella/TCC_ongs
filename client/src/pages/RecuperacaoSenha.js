@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom';
-import './RecuperacaoSenha.css';
 
 export default function RecuperacaoSenha() {
 	const impedirEnvioSemIntegracao = (evento) => {

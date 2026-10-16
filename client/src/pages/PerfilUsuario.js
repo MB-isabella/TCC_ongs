@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import { Link, Navigate, useNavigate } from 'react-router-dom';
 import BarraCatalogo from '../components/BarraCatalogo';
 import { getDadosSessao, getPerfilUsuario } from '../services/catalogo';
-import './PerfilUsuario.css';
 
 const IMAGEM_PLACEHOLDER = '/images/perfilplaceholder.png';
 

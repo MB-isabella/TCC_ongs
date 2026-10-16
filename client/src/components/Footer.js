@@ -1,17 +1,16 @@
 import '@fontsource/inter/400.css';
 import '@fontsource/inter/600.css';
-import './Footer.css';
 
 export default function Footer({ email }) {
 	return (
 		<footer className="footer">
 			<div className="footer-conteudo">
 				<div className="footer-contatos">
-					<p>E-mail para contato: {email === undefined ? 'sisongstorres2026@gmail.com' : email}</p>
+					<p>@ CONTATO: {email === undefined ? 'sisongstorres2026@gmail.com' : email}</p>
 					{email === undefined && (
 						<>
-							<p>Telefone para contato: 67676767</p>
-							<p>oi algo? hihi</p>
+							<p>Sistema criado por estudantes do IFC Campus Sombrio</p>
+							<p>Lugar de divulgação para as ONGs dos municípios na região de Torres RS</p>
 						</>
 					)}
 				</div>

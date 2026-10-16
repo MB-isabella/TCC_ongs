@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link, Navigate, useNavigate, useParams } from 'react-router-dom';
 import { gerarDoacao, getDadosSessao, getInfoOngDoacao } from '../services/catalogo';
-import './DoacaoTela.css';
 
 export default function DoacaoTela() {
 	const { id } = useParams();

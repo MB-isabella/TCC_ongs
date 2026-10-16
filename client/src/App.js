@@ -17,8 +17,7 @@ import DeletarOng from './pages/DeletarOng';
 import DoacoesUsuario from './pages/DoacoesUsuario';
 import DoacaoTela from './pages/DoacaoTela';
 import RecuperacaoSenha from './pages/RecuperacaoSenha';
-import './pages/TelaInicial.css';
-import './components/BotoesVermelhos.css';
+import Sobre from './pages/Sobre';
 
 export default function App() {
   return (
@@ -26,6 +25,7 @@ export default function App() {
       <Routes>
         <Route path="/" element={<TelaInicial/>} />
         <Route path="/catalogo" element={<Catalogo />} />
+        <Route path="/sobre" element={<Sobre />} />
         <Route path="/perfil-ong/:id" element={<PerfilOng />} />
         <Route path="/perfil-ong-proprietario" element={<PerfilOngProprietario />} />
         <Route path="/editar-perfil-ong" element={<EdicaoOng />} />

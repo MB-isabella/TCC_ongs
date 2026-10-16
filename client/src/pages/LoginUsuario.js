@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
-import './LoginUsuario.css';
 
 export default function LoginUsuario() {
 	const navigate = useNavigate();

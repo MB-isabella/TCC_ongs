@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import { Link, Navigate, useNavigate } from 'react-router-dom';
 import BarraCatalogo from '../components/BarraCatalogo';
 import { getDadosSessao, getPerfilOngsProprietario } from '../services/catalogo';
-import './ProprietarioDoacoes.css';
 
 function formatarData(data) {
 	const dataDoacao = new Date(data);

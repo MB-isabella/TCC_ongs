@@ -1,23 +1,10 @@
 import { useEffect, useMemo, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import categoriasOng from '../constants/categoriasOng';
 import '@fontsource/poppins/400.css';
 import '@fontsource/poppins/500.css';
 import '@fontsource/poppins/600.css';
 import '@fontsource/poppins/700.css';
-import './CadastrarOng.css';
-
-const categoriaOpcoes = [
-  'Meio Ambiente',
-  'Saúde',
-  'Educação',
-  'Direitos Humanos',
-  'Animais',
-  'Alimentação',
-  'Arte e Cultura',
-  'Inclusão Social',
-  'Comunidade',
-  'Outros',
-];
 
 export default function CadastrarOng() {
   const navigate = useNavigate();
@@ -302,7 +289,7 @@ export default function CadastrarOng() {
 
               {menuCategoriasAberto && (
                 <div className="lista-categorias-ong">
-                  {categoriaOpcoes.map((categoria) => (
+                  {categoriasOng.map((categoria) => (
                     <button
                       key={categoria}
                       type="button"

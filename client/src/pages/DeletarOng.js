@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { Link, Navigate, useNavigate } from 'react-router-dom';
 import { deletarOng, getDadosSessao } from '../services/catalogo';
-import './DeletarOng.css';
 
 export default function DeletarOng() {
 	const navigate = useNavigate();

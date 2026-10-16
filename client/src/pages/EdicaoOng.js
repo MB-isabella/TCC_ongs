@@ -6,7 +6,6 @@ import {
 	getDadosSessao,
 	getPerfilOngsProprietario,
 } from '../services/catalogo';
-import './EdicaoOng.css';
 
 function CampoEditavel({
 	id,

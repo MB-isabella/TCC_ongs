@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import './LoginOng.css';
 
 export default function LoginOng() {
 	const navigate = useNavigate();

@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import categoriasOng from '../constants/categoriasOng';
 import BarraCatalogo from '../components/BarraCatalogo';
 import CarrosselOngs from '../components/CarrosselOngs';
 import Footer from '../components/Footer';
 import { buscarOngs, getDadosSessao, getOngs, getPerfilOng, getPerfilUsuario } from '../services/catalogo';
-import './Catalogo.css';
 
 function Icone({ nome, tamanho = 20, preenchido = false }) {
 	const caminhos = {
@@ -108,11 +108,6 @@ export default function Catalogo() {
 		return () => controller.abort();
 	}, [sessaoId, sessaoTipo, imagemPerfilSessao]);
 
-	const categoriasDisponiveis = [...new Set(
-		ongsCarrossel.flatMap((ong) => Array.isArray(ong.categoria) ? ong.categoria : [ong.categoria])
-			.filter((categoria) => typeof categoria === 'string' && categoria.trim())
-			.map((categoria) => categoria.trim())
-	)].sort((a, b) => a.localeCompare(b, 'pt-BR'));
 	const ongsFiltradas = categoriaSelecionada
 		? ongs.filter((ong) => {
 			const categorias = Array.isArray(ong.categoria) ? ong.categoria : [ong.categoria];
@@ -152,7 +147,7 @@ export default function Catalogo() {
 					<div className="apresentacao-catalogo">
 						<CarrosselOngs rotulo="Carrossel de imagens" />
 						<div className="texto-apresentacao-catalogo">
-							<h1>Bem-vindo ao<br />OngsTorres</h1>
+							<h1>Bem-vindo ao<br />UniLinorte</h1>
 							<p>Conheça aqui as ONGs próximas</p>
 						</div>
 					</div>
@@ -192,7 +187,7 @@ export default function Catalogo() {
 											>
 												Todas as categorias
 											</button>
-											{categoriasDisponiveis.map((categoria) => (
+											{categoriasOng.map((categoria) => (
 												<button
 													type="button"
 													key={categoria}
@@ -203,9 +198,6 @@ export default function Catalogo() {
 													{categoria}
 												</button>
 											))}
-											{categoriasDisponiveis.length === 0 && (
-												<span className="sem-categorias-filtro">Nenhuma categoria disponível.</span>
-											)}
 										</div>
 									)}
 								</div>
@@ -217,7 +209,7 @@ export default function Catalogo() {
 						{(carregando || buscando) && <p className="mensagem-catalogo" role="status">Carregando ONGs...</p>}
 						{!carregando && !buscando && !erro && !erroBusca && ongsFiltradas.length === 0 && (
 							<p className="mensagem-catalogo" role="status">
-								{categoriaSelecionada ? `Nenhuma ONG encontrada na categoria ${categoriaSelecionada}.` : 'Nenhuma ONG encontrada.'}
+								{categoriaSelecionada ? `ONG não encontrada na categoria ${categoriaSelecionada}.` : 'ONG não encontrada.'}
 							</p>
 						)}
 

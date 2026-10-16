@@ -20,6 +20,7 @@
 }
 
 .atalho-barra-catalogo-compartilhada {
+	position: relative;
 	width: 52px;
 	height: 52px;
 	display: grid;
@@ -31,6 +32,34 @@
 	background: transparent;
 	text-decoration: none;
 	cursor: pointer;
+}
+
+.atalho-barra-catalogo-compartilhada::after {
+	position: absolute;
+	z-index: 40;
+	top: 50%;
+	left: calc(100% + 10px);
+	padding: 7px 10px;
+	border-radius: 5px;
+	color: #fff;
+	background: #3e0508;
+	content: attr(data-tooltip);
+	font-family: 'Poppins', sans-serif;
+	font-size: 12px;
+	font-weight: 500;
+	line-height: 1.2;
+	white-space: nowrap;
+	opacity: 0;
+	visibility: hidden;
+	pointer-events: none;
+	transform: translateY(-50%);
+	transition: opacity .15s ease;
+}
+
+.atalho-barra-catalogo-compartilhada:hover::after,
+.atalho-barra-catalogo-compartilhada:focus-visible::after {
+	opacity: 1;
+	visibility: visible;
 }
 
 .atalho-barra-catalogo-compartilhada > img {
@@ -69,6 +98,10 @@
 .atalho-barra-catalogo-compartilhada:focus-visible {
 	background: rgba(255, 255, 255, .16);
 	outline: none;
+}
+
+.atalho-barra-catalogo-compartilhada.ativo {
+	background: rgba(255, 255, 255, .22);
 }
 
 .atalho-barra-catalogo-compartilhada svg {
@@ -158,6 +191,7 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
+	.atalho-barra-catalogo-compartilhada::after,
 	.sair-barra-catalogo-compartilhada::after {
 		transition: none;
 	}

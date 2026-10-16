@@ -1,10 +1,16 @@
 import { useEffect, useState } from 'react';
-import './CarrosselOngs.css';
+
+const IMAGENS_CARROSSEL_PADRAO = [
+	'/images/images-carrossel/voluntario.png',
+	'/images/images-carrossel/meio-ambiente.png',
+	'/images/images-carrossel/donation.png',
+	'/images/images-carrossel/animais.png',
+];
 
 export default function CarrosselOngs({ rotulo = 'Carrossel de imagens', mostrarControles = false, imagens }) {
 	const [slideAtual, setSlideAtual] = useState(0);
 	const slides = imagens === undefined
-		? [1, 2, 3]
+		? IMAGENS_CARROSSEL_PADRAO
 		: Array.isArray(imagens)
 			? imagens.filter((imagem) => typeof imagem === 'string' && imagem.trim())
 			: [];
@@ -32,7 +38,7 @@ export default function CarrosselOngs({ rotulo = 'Carrossel de imagens', mostrar
 					aria-hidden={indice !== slideAtual}
 				>
 					{typeof slide === 'string'
-						? <img className="imagem-carrossel-ong" src={slide} alt={`Imagem ${indice + 1} da ONG`} />
+						? <img className="imagem-carrossel-ong" src={slide} alt={`Imagem ${indice + 1} do carrossel`} />
 						: <span className="sr-only">Imagem ilustrativa {slide}</span>}
 				</div>
 			)) : <p className="carrossel-sem-imagens">Esta ONG ainda não adicionou imagens.</p>}

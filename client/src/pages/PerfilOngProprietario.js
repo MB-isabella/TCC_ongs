@@ -4,7 +4,6 @@ import BarraCatalogo from '../components/BarraCatalogo';
 import CarrosselOngs from '../components/CarrosselOngs';
 import Footer from '../components/Footer';
 import { getDadosSessao, getPerfilOngsProprietario } from '../services/catalogo';
-import './PerfilOngProprietario.css';
 
 export default function PerfilOngProprietario() {
 	const navigate = useNavigate();
