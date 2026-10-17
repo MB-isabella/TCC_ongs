@@ -71,7 +71,7 @@
 .logo-edicao-ong > button,
 .botao-lapis-banner-edicao-ong,
 .botao-lapis-galeria-edicao-ong,
-.preview-qrcode-edicao-ong > button {
+.preview-qrcode-edicao-ong > .botao-lapis-qrcode-edicao-ong {
 	position: absolute;
 	z-index: 3;
 	width: 29px;
@@ -94,7 +94,7 @@
 .logo-edicao-ong > button img,
 .botao-lapis-banner-edicao-ong img,
 .botao-lapis-galeria-edicao-ong img,
-.preview-qrcode-edicao-ong > button img {
+.preview-qrcode-edicao-ong > .botao-lapis-qrcode-edicao-ong img {
 	width: 100%;
 	height: 100%;
 	object-fit: contain;
@@ -384,7 +384,7 @@
 .botao-imagem-qrcode-edicao-ong > img {
 	width: 100%;
 	height: 100%;
-	object-fit: cover;
+	object-fit: contain;
 	transition: filter .18s ease;
 }
 

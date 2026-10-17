@@ -322,9 +322,16 @@
 	border: 1px solid #c9898c;
 	border-radius: 4px;
 	color: #781117;
+	background: #fff;
 	font-size: 12px;
 	text-decoration: none;
-	transition: background-color .16s ease, border-color .16s ease, filter .16s ease;
+	transition: background-color .16s ease, border-color .16s ease;
+}
+
+.botao-verificar-doacoes-ong:hover,
+.botao-verificar-doacoes-ong:focus-visible {
+	border-color: #a75a5e;
+	background: #f0dddd;
 }
 
 .botao-verificar-doacoes-ong img {

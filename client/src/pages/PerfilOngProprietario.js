@@ -123,7 +123,7 @@ export default function PerfilOngProprietario() {
 									<div className="pix-ong-proprietario">
 										<h2>Chave Pix</h2>
 										<p>{ong.chave_pix || 'Chave Pix não informada'}</p>
-										<Link className="botao-verificar-doacoes-ong hover-botao-vermelho" to="/verificar-doacoes-ong">
+										<Link className="botao-verificar-doacoes-ong" to="/verificar-doacoes-ong">
 											<img src="/images/doacao.png" alt="" />
 											<span>Verificar Doações</span>
 										</Link>
