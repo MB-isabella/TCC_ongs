@@ -24,6 +24,30 @@
 .grupo-foto-edicao-usuario .moldura-foto-perfil-usuario {
 	width: 142px;
 	height: 142px;
+	display: block;
+	overflow: hidden;
+	border-radius: 50%;
+}
+
+.grupo-foto-edicao-usuario .moldura-foto-perfil-usuario > img {
+	position: absolute;
+	inset: 0;
+	display: block;
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	padding: 0;
+	border: 0;
+	border-radius: 50%;
+	object-fit: cover;
+	object-position: center;
+}
+
+.grupo-foto-edicao-usuario .moldura-foto-perfil-usuario > img.imagem-placeholder-perfil-usuario {
+	inset: 0;
+	width: 100%;
+	height: 100%;
+	transform: none;
 }
 
 .entrada-imagem-edicao-usuario {

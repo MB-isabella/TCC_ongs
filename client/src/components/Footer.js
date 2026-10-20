@@ -10,7 +10,7 @@ export default function Footer({ email }) {
 					{email === undefined && (
 						<>
 							<p>Sistema criado por estudantes do IFC Campus Sombrio</p>
-							<p>Lugar de divulgação para as ONGs dos municípios na região de Torres RS</p>
+							<p>Local de divulgação para as ONGs dos municípios na região de Torres RS</p>
 						</>
 					)}
 				</div>

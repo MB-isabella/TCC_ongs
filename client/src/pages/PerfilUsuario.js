@@ -66,7 +66,7 @@ export default function PerfilUsuario() {
 					<div className="cabecalho-perfil-usuario">
 						<div className="moldura-foto-perfil-usuario">
 							<img
-								className={fotoPerfil === IMAGEM_PLACEHOLDER ? 'imagem-placeholder-perfil-usuario' : ''}
+								className={`foto-perfil-destaque-usuario${fotoPerfil === IMAGEM_PLACEHOLDER ? ' imagem-placeholder-perfil-usuario' : ''}`}
 								src={fotoPerfil}
 								alt="Foto de perfil do usuário"
 								onError={() => setFotoPerfil(IMAGEM_PLACEHOLDER)}
