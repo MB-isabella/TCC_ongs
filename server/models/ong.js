@@ -14,7 +14,9 @@ const ongSchema = new mongoose.Schema({
   carrossel: { type: [String], required: true },
   qrcode: { type: String, required: true },
   chave_pix: { type: String, required: true },
-  instagram: { type: String, required: false }
+  instagram: { type: String, required: false },
+  tokenRecuperacaoHash: { type: String, select: false },
+  tokenRecuperacaoExpira: { type: Date, select: false }
  }, { timestamps: true });
 
 module.exports = mongoose.model('Ong', ongSchema);

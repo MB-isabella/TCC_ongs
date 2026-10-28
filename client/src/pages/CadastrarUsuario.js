@@ -77,7 +77,7 @@ export default function CadastrarUsuario() {
 				</div>
 				<div className="chamada-lateral-cadastro">
 					<p>Já tem uma conta?</p>
-					<h2>Bem-vindo de<br />volta!</h2>
+					<h2>Bem-vindo de <br />volta!</h2>
 					<Link to="/login-usuario" className="botao-login-cadastro hover-botao-vermelho">Entrar</Link>
 				</div>
 			</aside>

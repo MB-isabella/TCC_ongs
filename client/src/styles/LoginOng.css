@@ -202,6 +202,26 @@
 	object-fit: contain;
 }
 
+@media (min-width: 701px) and (max-width: 900px) {
+	.painel-login-ong {
+		grid-template-columns: minmax(0, 52%) minmax(0, 48%);
+	}
+
+	.lado-formulario-login {
+		padding-right: 24px;
+		padding-left: 24px;
+	}
+
+	.lado-cadastro-login {
+		padding-right: 24px;
+		padding-left: 24px;
+	}
+
+	.voltar-inicio {
+		right: 24px;
+	}
+}
+
 @media (max-width: 700px) {
 	.pagina-login-ong {
 		padding: 0;

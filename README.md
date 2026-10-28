@@ -79,7 +79,12 @@ npm install
 MONGO_URI=<sua_string_de_conexao_do_mongodb>
 JWT_SECRET=<sua_chave_secreta_para_assinar_e_validar_os_tokens_de_autenticação>
 PORT=<a_porta_na_qual_rodará_seu_backend>
+EMAIL_USER=<seu_email_gmail>
+EMAIL_PASS=<senha_de_app_do_gmail>
+CLIENT_URL=http://localhost:3000
 ```
+
+Para o envio de recuperação de senha, configure `EMAIL_USER` com a conta Gmail remetente e `EMAIL_PASS` com uma senha de app do Google (não a senha normal da conta). `CLIENT_URL` deve apontar para o endereço do frontend; em desenvolvimento, use `http://localhost:3000`.
 
 #### **Como configurar o `MONGO_URI`:**
 

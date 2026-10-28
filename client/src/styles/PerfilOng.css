@@ -257,6 +257,7 @@
 	.identidade-perfil-ong {
 		gap: 12px;
 		margin-left: 5px;
+		margin-bottom: 16px;
 	}
 
 	.logo-perfil-ong {
@@ -266,6 +267,7 @@
 
 	.identidade-texto-perfil-ong {
 		padding-bottom: 7px;
+		transform: translateY(16px);
 	}
 
 	.dados-perfil-ong {

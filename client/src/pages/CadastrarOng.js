@@ -16,11 +16,18 @@ export default function CadastrarOng() {
     const previousBodyOverflow = body.style.overflow;
     const previousBodyMargin = body.style.margin;
 
-    html.style.overflow = 'hidden';
-    body.style.overflow = 'hidden';
+    const ajustarRolagem = () => {
+      const rolagemNaPagina = window.matchMedia('(max-width: 900px)').matches;
+      html.style.overflow = rolagemNaPagina ? previousHtmlOverflow : 'hidden';
+      body.style.overflow = rolagemNaPagina ? previousBodyOverflow : 'hidden';
+    };
+
+    ajustarRolagem();
     body.style.margin = '0';
+    window.addEventListener('resize', ajustarRolagem);
 
     return () => {
+      window.removeEventListener('resize', ajustarRolagem);
       html.style.overflow = previousHtmlOverflow;
       body.style.overflow = previousBodyOverflow;
       body.style.margin = previousBodyMargin;
@@ -219,7 +226,7 @@ export default function CadastrarOng() {
 
         <div className="chamada-lateral-cadastro-ong">
           <p>Já tem uma conta?</p>
-          <h2>Bem-vindo de<br />volta!</h2>
+          <h2>Bem-vindo de <br />volta!</h2>
           <Link to="/login-ong" className="botao-login-cadastro-ong hover-botao-vermelho">Entrar</Link>
         </div>
       </aside>

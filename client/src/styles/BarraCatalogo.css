@@ -196,3 +196,61 @@
 		transition: none;
 	}
 }
+
+@media (max-width: 600px) {
+	.barra-lateral-catalogo-compartilhada {
+		width: 48px;
+		padding: 8px 0 10px;
+	}
+
+	.icones-barra-catalogo-compartilhada {
+		gap: 12px;
+	}
+
+	.atalho-barra-catalogo-compartilhada {
+		width: 38px;
+		height: 38px;
+	}
+
+	.atalho-barra-catalogo-compartilhada > img,
+	.atalho-barra-catalogo-compartilhada > .imagem-perfil-barra-catalogo {
+		width: 36px;
+		height: 36px;
+	}
+
+	.atalho-barra-catalogo-compartilhada > .foto-perfil-barra-catalogo {
+		width: 34px;
+		height: 34px;
+	}
+
+	.atalho-inicio-barra-catalogo-compartilhada {
+		width: 42px;
+		height: 42px;
+	}
+
+	.atalho-inicio-barra-catalogo-compartilhada > img {
+		width: 42px;
+		height: 42px;
+	}
+
+	.topbar-catalogo-compartilhada {
+		left: 48px;
+		height: 40px;
+		padding: 0 10px;
+	}
+
+	.marca-catalogo-compartilhada {
+		gap: 6px;
+		font-size: 13px;
+	}
+
+	.marca-catalogo-compartilhada img {
+		width: 30px;
+		height: 30px;
+	}
+
+	.conteudo-com-barra-catalogo {
+		margin-left: 48px;
+		padding-top: 40px;
+	}
+}

@@ -32,15 +32,18 @@
 
 @media (max-width: 430px) {
 	.footer {
-		padding-right: 24px;
-		padding-left: 24px;
+		padding: 16px 12px;
 	}
 
 	.footer-contatos p {
-		font-size: 16px;
+		font-size: 12px;
 	}
 
 	.footer-logo {
-		width: 90px;
+		width: 56px;
+	}
+
+	.footer-conteudo {
+		gap: 10px;
 	}
 }

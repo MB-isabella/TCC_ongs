@@ -60,6 +60,10 @@
 	font-size: 13px;
 }
 
+.form-recuperacao-senha label:not(:first-child) {
+	margin-top: 12px;
+}
+
 .form-recuperacao-senha input {
 	width: 100%;
 	height: 40px;
@@ -82,7 +86,7 @@
 	width: 159px;
 	min-height: 44px;
 	align-self: center;
-	margin-top: 56px;
+	margin-top: 28px;
 	border: 0;
 	border-radius: 5px;
 	color: #fff;
@@ -94,11 +98,86 @@
 	transition: filter .16s ease;
 }
 
+.form-recuperacao-senha button:disabled {
+	cursor: wait;
+	opacity: .75;
+}
+
+.mensagem-recuperacao {
+	margin: 12px 0 0;
+	color: #276738;
+	font-size: 12px;
+	text-align: center;
+}
+
+.mensagem-recuperacao.erro {
+	color: #a3222a;
+}
+
 .voltar-inicio-recuperacao-senha {
 	margin-top: 24px;
 	color: #700d11;
 	font-size: 15px;
 	text-decoration: underline;
+}
+
+@media (min-width: 901px) and (max-width: 1100px) {
+	.cartao-recuperacao-senha {
+		width: 70vw;
+		min-height: 70vh;
+		justify-content: center;
+		padding: 50px clamp(48px, 7vw, 80px);
+	}
+
+	.icone-recuperacao-senha {
+		width: 82px;
+		height: 82px;
+		margin-bottom: 10px;
+	}
+
+	.cartao-recuperacao-senha h1 {
+		font-size: 34px;
+	}
+
+	.instrucao-recuperacao-senha {
+		margin: 20px 0 14px;
+		font-size: 17px;
+	}
+
+	.form-recuperacao-senha {
+		max-width: 380px;
+	}
+
+	.form-recuperacao-senha label {
+		font-size: 17px;
+	}
+
+	.form-recuperacao-senha label:not(:first-child) {
+		margin-top: 16px;
+	}
+
+	.form-recuperacao-senha input {
+		height: 52px;
+		padding-inline: 14px;
+		font-size: 17px;
+	}
+
+	.form-recuperacao-senha button {
+		width: 210px;
+		min-height: 56px;
+		margin-top: 36px;
+		font-size: 18px;
+	}
+
+	.mensagem-recuperacao {
+		margin-top: 16px;
+		font-size: 15px;
+	}
+
+	.voltar-inicio-recuperacao-senha {
+		margin-top: 30px;
+		font-size: 18px;
+	}
 }
 
 .form-recuperacao-senha button:focus-visible,
@@ -122,7 +201,7 @@
 	}
 
 	.form-recuperacao-senha button {
-		margin-top: 42px;
+		margin-top: 28px;
 	}
 }
 

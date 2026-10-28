@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, Navigate, useNavigate } from 'react-router-dom';
+import { getDadosSessao } from '../services/catalogo';
 
 export default function LoginOng() {
 	const navigate = useNavigate();
@@ -7,6 +8,7 @@ export default function LoginOng() {
 	const [senha, setSenha] = useState('');
 	const [mensagem, setMensagem] = useState('');
 	const [carregando, setCarregando] = useState(false);
+	const sessao = getDadosSessao();
 
 	const realizarLogin = async (evento) => {
 		evento.preventDefault();
@@ -39,6 +41,10 @@ export default function LoginOng() {
 		}
 	};
 
+	if (sessao) {
+		return <Navigate to={sessao.tipo === 'ong' ? '/perfil-ong-proprietario' : '/catalogo'} replace />;
+	}
+
 	return (
 		<main className="pagina-login-ong">
 			<section className="painel-login-ong">
@@ -62,7 +68,7 @@ export default function LoginOng() {
 							<img className="icone-cadeado" src="/images/cadeado.png" alt="" />
 							<input id="senha-ong" type="password" value={senha} onChange={(evento) => setSenha(evento.target.value)} required />
 						</div>
-						<Link to="/recuperacao-senha" className="recuperar-senha">Esqueci minha senha</Link>
+						<Link to="/recuperacao-senha?tipo=ong" className="recuperar-senha">Esqueci minha senha</Link>
 						{mensagem && <p className="mensagem-login" role="alert">{mensagem}</p>}
 						<button type="submit" className="botao-entrar hover-botao-vermelho" disabled={carregando}>
 							<span>{carregando ? 'Entrando...' : 'Entrar'}</span>

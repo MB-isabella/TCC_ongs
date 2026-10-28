@@ -326,3 +326,148 @@
 .pagina-cadastro-usuario *::after {
 	font-family: 'Poppins', sans-serif;
 }
+
+@media (max-width: 900px) {
+	.pagina-cadastro-usuario {
+		height: auto;
+		min-height: 100vh;
+		min-height: 100dvh;
+		grid-template-columns: minmax(0, 1fr);
+		grid-template-rows: auto 1fr;
+		overflow: visible;
+	}
+
+	.lateral-cadastro-usuario {
+		position: relative;
+		height: auto;
+		min-height: 68px;
+		display: grid;
+		grid-template-columns: 38px minmax(0, 1fr) auto auto auto;
+		align-items: center;
+		column-gap: clamp(6px, 1.4vw, 12px);
+		padding: 8px clamp(12px, 3vw, 28px);
+	}
+
+	.topo-lateral-cadastro,
+	.chamada-lateral-cadastro {
+		display: contents;
+	}
+
+	.marca-cadastro {
+		grid-column: 1;
+		grid-row: 1;
+		width: 38px;
+		height: 38px;
+		transform: none;
+	}
+
+	.marca-cadastro img {
+		width: 38px;
+		height: 38px;
+	}
+
+	.chamada-lateral-cadastro h2 {
+		grid-column: 2;
+		grid-row: 1;
+		font-size: clamp(14px, 2.1vw, 18px);
+		line-height: 1.2;
+		white-space: nowrap;
+	}
+
+	.chamada-lateral-cadastro h2 br {
+		display: none;
+	}
+
+	.chamada-lateral-cadastro p {
+		grid-column: 3;
+		grid-row: 1;
+		font-size: clamp(11px, 1.55vw, 14px);
+		white-space: nowrap;
+	}
+
+	.chamada-lateral-cadastro p::after {
+		display: none;
+	}
+
+	.voltar-cadastro {
+		grid-column: 4;
+		grid-row: 1;
+		margin: 0;
+		font-size: clamp(10px, 1.5vw, 13px);
+		white-space: nowrap;
+	}
+
+	.botao-login-cadastro {
+		position: static;
+		grid-column: 5;
+		grid-row: 1;
+		width: auto;
+		min-height: 34px;
+		padding: 0 12px;
+		font-size: 13px;
+		white-space: nowrap;
+	}
+
+	.conteudo-cadastro-usuario {
+		min-height: calc(100dvh - 68px);
+		overflow: visible;
+		padding: 12px clamp(18px, 5vw, 48px) 28px;
+	}
+
+	.cabecalho-cadastro-usuario h1 {
+		margin-top: 20px;
+		margin-bottom: 30px;
+		font-size: clamp(24px, 4vw, 30px);
+	}
+
+	.formulario-cadastro-usuario > input:not(.entrada-arquivo-cadastro) {
+		margin-bottom: 18px;
+	}
+}
+
+@media (max-width: 560px) {
+	.lateral-cadastro-usuario {
+		min-height: 78px;
+		grid-template-columns: 36px minmax(0, 1fr) auto auto;
+		grid-template-rows: 36px 26px;
+		grid-template-areas:
+			"logo welcome welcome welcome"
+			"account account back enter";
+		column-gap: 6px;
+		row-gap: 4px;
+		padding: 7px 10px;
+	}
+
+	.marca-cadastro {
+		grid-area: logo;
+		width: 36px;
+		height: 36px;
+	}
+
+	.marca-cadastro img {
+		width: 36px;
+		height: 36px;
+	}
+
+	.chamada-lateral-cadastro h2 {
+		grid-area: welcome;
+		font-size: 15px;
+	}
+
+	.chamada-lateral-cadastro p {
+		grid-area: account;
+		font-size: 10px;
+	}
+
+	.voltar-cadastro {
+		grid-area: back;
+		font-size: 10px;
+	}
+
+	.botao-login-cadastro {
+		grid-area: enter;
+		min-height: 26px;
+		padding: 0 8px;
+		font-size: 11px;
+	}
+}
