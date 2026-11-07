@@ -1,71 +1,33 @@
 {
-  "$schema": "https://openapi.vercel.sh/vercel.json",
-  "services": {
-    "client": {
-      "root": "client",
-      "framework": "create-react-app"
-    },
-    "server": {
-      "root": "server",
-      "framework": "express",
-      "bindings": [
-        {
-          "type": "service",
-          "service": "server",
-          "format": "url",
-          "env": "MONGO_URI"
+    "$schema": "https://openapi.vercel.sh/vercel.json",
+    "services": {
+        "client": {
+            "root": "client",
+            "framework": "create-react-app"
         },
-        {
-          "type": "service",
-          "service": "server",
-          "format": "url",
-          "env": "CLOUDINARY_CLOUD_NAME"
-        },
-        {
-          "type": "service",
-          "service": "server",
-          "format": "url",
-          "env": "CLOUDINARY_API_KEY"
-        },
-        {
-          "type": "service",
-          "service": "server",
-          "format": "url",
-          "env": "CLOUDINARY_API_SECRET"
-        },
-        {
-          "type": "service",
-          "service": "server",
-          "format": "url",
-          "env": "EMAIL_USER"
-        },
-        {
-          "type": "service",
-          "service": "server",
-          "format": "url",
-          "env": "EMAIL_PASS"
-        },
-        {
-          "type": "service",
-          "service": "server",
-          "format": "url",
-          "env": "JWT_SECRET"
+        "server": {
+            "root": "server",
+            "framework": "express"
         }
-      ]
-    }
-  },
-  "rewrites": [
-    {
-      "source": "/api/(.*)",
-      "destination": {
-        "service": "server"
-      }
     },
-    {
-      "source": "/(.*)",
-      "destination": {
-        "service": "client"
-      }
-    }
-  ]
+    "functions": {
+        "api/(.*)": {
+            "memory": 1024,
+            "maxDuration": 10
+        }
+    },
+    "rewrites": [
+        {
+            "source": "/api/(.*)",
+            "destination": {
+                "service": "server"
+            }
+        },
+        {
+            "source": "/(.*)",
+            "destination": {
+                "service": "client"
+            }
+        }
+    ]
 }
