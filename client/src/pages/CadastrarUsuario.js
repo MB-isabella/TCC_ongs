@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { apiUrl } from '../services/api';
 import '@fontsource/poppins/400.css';
 import '@fontsource/poppins/500.css';
 import '@fontsource/poppins/600.css';
@@ -44,7 +45,7 @@ export default function CadastrarUsuario() {
 		if (imagem) dados.append('imagem', imagem);
 
 		try {
-			const resposta = await fetch('http://localhost:7777/usuario/registrar-usuario', {
+			const resposta = await fetch(apiUrl('usuario/registrar-usuario'), {
 				method: 'POST',
 				body: dados,
 			});

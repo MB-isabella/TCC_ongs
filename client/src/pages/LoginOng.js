@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Link, Navigate, useNavigate } from 'react-router-dom';
 import { getDadosSessao } from '../services/catalogo';
+import { apiUrl } from '../services/api';
 
 export default function LoginOng() {
 	const navigate = useNavigate();
@@ -16,7 +17,7 @@ export default function LoginOng() {
 		setCarregando(true);
 
 		try {
-			const resposta = await fetch('http://localhost:7777/ong/login-ong', {
+			const resposta = await fetch(apiUrl('ong/login-ong'), {
 				method: 'POST',
 				headers: { 'Content-Type': 'application/json' },
 				body: JSON.stringify({ email, senha }),

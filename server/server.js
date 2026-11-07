@@ -20,6 +20,10 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 
+app.use('/api/usuario', usuarioRoutes);
+app.use('/api/ong', ongRoutes);
+app.use('/api/catalogo', catalogoRoutes);
+app.use('/api/doacao', doacaoRoutes);
 app.use('/usuario', usuarioRoutes);
 app.use('/ong', ongRoutes);
 app.use('/catalogo', catalogoRoutes);

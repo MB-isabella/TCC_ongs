@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Link, Navigate, useLocation, useNavigate } from 'react-router-dom';
 import { getDadosSessao } from '../services/catalogo';
+import { apiUrl } from '../services/api';
 
 export default function LoginUsuario() {
 	const navigate = useNavigate();
@@ -17,7 +18,7 @@ export default function LoginUsuario() {
 		setCarregando(true);
 
 		try {
-			const resposta = await fetch('http://localhost:7777/usuario/login-usuario', {
+			const resposta = await fetch(apiUrl('usuario/login-usuario'), {
 				method: 'POST',
 				headers: { 'Content-Type': 'application/json' },
 				body: JSON.stringify({ email, senha }),

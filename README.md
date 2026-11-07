@@ -1,4 +1,3 @@
-
 # Sistema de Agendamento para salão de beleza - Stack MERN
 
 Este projeto é um **Sistema de Agendamento Online para salão de beleza**, desenvolvido utilizando a stack **MERN (MongoDB, Express, React e Node.js)**. Foi desenvolvido com fins didáticos para servir como **apoio para os alunos desenvolverem seus próprios projetos de conclusão de curso (TCC)**.
@@ -138,6 +137,8 @@ npm start
 ```
 
 O frontend estará disponível em: `http://localhost:3000`.
+
+As chamadas do navegador usam `/api` no mesmo domínio; no Vercel, esse caminho é encaminhado ao backend. Para apontar o frontend a outra base de API, defina `REACT_APP_API_URL` antes de gerar o build. Em desenvolvimento local, o proxy do Create React App encaminha `/api` para `http://localhost:7777`.
 
 ## Funcionalidades
 

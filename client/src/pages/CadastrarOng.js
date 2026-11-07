@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import categoriasOng from '../constants/categoriasOng';
+import { apiUrl } from '../services/api';
 import '@fontsource/poppins/400.css';
 import '@fontsource/poppins/500.css';
 import '@fontsource/poppins/600.css';
@@ -189,7 +190,7 @@ export default function CadastrarOng() {
       if (qrcode) dados.append('qrcode', qrcode);
       carrossel.forEach((arquivo) => dados.append('carrossel', arquivo));
 
-      const resposta = await fetch('http://localhost:7777/ong/registrar-ong', {
+      const resposta = await fetch(apiUrl('ong/registrar-ong'), {
         method: 'POST',
         body: dados,
       });

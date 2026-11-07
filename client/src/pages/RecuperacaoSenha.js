@@ -1,8 +1,7 @@
 import { useState } from 'react';
 import { Link, useSearchParams } from 'react-router-dom';
+import { apiUrl } from '../services/api';
 import '../styles/RecuperacaoSenha.css';
-
-const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:7777';
 
 export default function RecuperacaoSenha() {
 	const [searchParams] = useSearchParams();
@@ -31,7 +30,7 @@ export default function RecuperacaoSenha() {
 		setCarregando(true);
 		try {
 			const resposta = await fetch(
-				`${API_URL}/usuario/${redefinindo ? 'redefinir-senha' : 'solicitar-recuperacao-senha'}`,
+				apiUrl(`usuario/${redefinindo ? 'redefinir-senha' : 'solicitar-recuperacao-senha'}`),
 				{
 					method: 'POST',
 					headers: { 'Content-Type': 'application/json' },
