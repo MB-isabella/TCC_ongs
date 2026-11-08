@@ -8,9 +8,11 @@ const {
   editarUsuario,
   deletarUsuario,
   getPerfilUsuario,
+} = require('../controllers/usuarioController');
+const {
   solicitarRecuperacaoSenha,
   redefinirSenha,
-} = require('../controllers/usuarioController');
+} = require('../controllers/recuperacaoSenhaController');
 
 router.post('/login-usuario', loginUsuario);
 router.post('/registrar-usuario', upload.single('imagem'), registrarUsuario);

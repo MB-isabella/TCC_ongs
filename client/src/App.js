@@ -17,6 +17,7 @@ import DeletarOng from './pages/DeletarOng';
 import DoacoesUsuario from './pages/DoacoesUsuario';
 import DoacaoTela from './pages/DoacaoTela';
 import RecuperacaoSenha from './pages/RecuperacaoSenha';
+import RedefinirSenha from './pages/RedefinirSenha';
 import Sobre from './pages/Sobre';
 
 export default function App() {
@@ -37,7 +38,7 @@ export default function App() {
         <Route path="/minhas-doacoes" element={<DoacoesUsuario />} />
         <Route path="/doacao/:id" element={<DoacaoTela />} />
         <Route path="/recuperacao-senha" element={<RecuperacaoSenha />} />
-        <Route path="/redefinir-senha" element={<RecuperacaoSenha />} />
+        <Route path="/redefinir-senha" element={<RedefinirSenha />} />
         <Route path="/login-usuario" element={<LoginUsuario />} />
         <Route path="/login-ong" element={<LoginOng />} />
         <Route path="/cadastro-usuario" element={<CadastrarUsuario />} />
