@@ -114,13 +114,11 @@
 	padding-top: 36px;
 }
 
-.icone-sucesso-redefinir-senha {
-	width: 82px;
-	height: 82px;
+.logo-sucesso-redefinir-senha {
+	width: 96px;
+	height: 96px;
 	margin-bottom: 20px;
-	background: #aaa;
-	clip-path: polygon(50% 0, 62% 34%, 100% 50%, 62% 66%, 50% 100%, 38% 66%, 0 50%, 38% 34%);
-	filter: drop-shadow(0 0 8px rgba(170, 170, 170, .3));
+	object-fit: contain;
 }
 
 .sucesso-redefinir-senha h1 {

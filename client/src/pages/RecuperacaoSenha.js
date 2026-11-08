@@ -6,8 +6,7 @@ import '../styles/RecuperacaoSenha.css';
 export default function RecuperacaoSenha() {
 	const [searchParams] = useSearchParams();
 	const token = searchParams.get('token');
-	const tipoInicial = searchParams.get('tipo') === 'ong' ? 'ong' : 'usuario';
-	const [tipo, setTipo] = useState(tipoInicial);
+	const tipo = searchParams.get('tipo') === 'ong' ? 'ong' : 'usuario';
 	const [email, setEmail] = useState('');
 	const [senha, setSenha] = useState('');
 	const [confirmarSenha, setConfirmarSenha] = useState('');
@@ -106,27 +105,6 @@ export default function RecuperacaoSenha() {
 									onChange={(evento) => setEmail(evento.target.value)}
 									required
 								/>
-								<fieldset className="seletor-tipo-conta">
-									<legend>Tipo de conta</legend>
-									<div className="opcoes-tipo-conta" role="group" aria-label="Selecione o tipo de conta">
-										<button
-											className={tipo === 'ong' ? 'opcao-tipo-conta selecionada' : 'opcao-tipo-conta'}
-											type="button"
-											aria-pressed={tipo === 'ong'}
-											onClick={() => setTipo('ong')}
-										>
-											ONG
-										</button>
-										<button
-											className={tipo === 'usuario' ? 'opcao-tipo-conta selecionada' : 'opcao-tipo-conta'}
-											type="button"
-											aria-pressed={tipo === 'usuario'}
-											onClick={() => setTipo('usuario')}
-										>
-											Usuário
-										</button>
-									</div>
-								</fieldset>
 							</>
 						)}
 						{mensagem && <p className={erro ? 'mensagem-recuperacao erro' : 'mensagem-recuperacao'} role={erro ? 'alert' : 'status'}>{mensagem}</p>}

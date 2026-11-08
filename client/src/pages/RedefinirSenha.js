@@ -53,7 +53,7 @@ export default function RedefinirSenha() {
 			<section className="cartao-redefinir-senha" aria-labelledby="titulo-redefinir-senha">
 				{concluido ? (
 					<div className="sucesso-redefinir-senha" role="status">
-						<span className="icone-sucesso-redefinir-senha" aria-hidden="true" />
+						<img className="logo-sucesso-redefinir-senha" src="/images/logovermelha.PNG" alt="" />
 						<h1 id="titulo-redefinir-senha">Nova senha<br />cadastrada!</h1>
 					</div>
 				) : (

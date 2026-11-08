@@ -60,40 +60,6 @@
 	font-size: 13px;
 }
 
-.seletor-tipo-conta {
-	margin: 12px 0 0;
-	padding: 0;
-	border: 0;
-}
-
-.seletor-tipo-conta legend {
-	margin-bottom: 6px;
-	color: #82383c;
-	font-size: 13px;
-}
-
-.opcoes-tipo-conta {
-	display: flex;
-	gap: 8px;
-}
-
-.opcoes-tipo-conta button {
-	flex: 1;
-	min-height: 36px;
-	border: 1px solid #a94a50;
-	border-radius: 4px;
-	color: #700d11;
-	background: #fff;
-	font: inherit;
-	font-size: 13px;
-	cursor: pointer;
-}
-
-.opcoes-tipo-conta button.selecionada {
-	color: #fff;
-	background: #700d11;
-}
-
 .form-recuperacao-senha label:not(:first-child) {
 	margin-top: 12px;
 }
