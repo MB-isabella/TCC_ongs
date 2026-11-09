@@ -46,6 +46,7 @@
 	background: linear-gradient(105deg, #4f0508, #921316);
 	font: inherit;
 	font-size: 11px;
+	font-weight: 700;
 	cursor: pointer;
 }
 
@@ -147,6 +148,56 @@
 	padding-left: 10px;
 	font-size: 12px;
 	font-style: italic;
+}
+
+.campo-categorias-edicao-ong {
+	min-width: 0;
+	margin: 0;
+	padding: 7px 10px 9px;
+	border-radius: 6px;
+	background: #f8e5e6;
+}
+
+.campo-categorias-edicao-ong > p {
+	margin: 0 0 5px;
+	color: #812125;
+	font-size: 11px;
+	font-weight: 600;
+}
+
+.campo-categorias-edicao-ong > p span {
+	color: #98696a;
+	font-size: 10px;
+	font-weight: 400;
+}
+
+.opcoes-categorias-edicao-ong {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 5px;
+}
+
+.opcoes-categorias-edicao-ong button {
+	padding: 3px 8px;
+	border: 1px solid #e8c9cb;
+	border-radius: 12px;
+	color: #781117;
+	background: #fffdfd;
+	font: inherit;
+	font-size: 11px;
+	cursor: pointer;
+}
+
+.opcoes-categorias-edicao-ong button.selecionada {
+	border-color: #b66a6e;
+	color: #640b0e;
+	background: #f2d1d3;
+	font-weight: 600;
+}
+
+.opcoes-categorias-edicao-ong button:focus-visible {
+	outline: 2px solid #700d11;
+	outline-offset: 2px;
 }
 
 .entrada-edicao-ong {
@@ -596,6 +647,14 @@
 .identidade-form-edicao-ong > .campo-edicao-ong:nth-child(2) input {
 	height: 36px;
 	font-size: 16px;
+}
+
+.campo-categorias-edicao-ong > p {
+	font-size: 14px;
+}
+
+.campo-categorias-edicao-ong > p span {
+	font-size: 12px;
 }
 
 .entrada-edicao-ong > input,

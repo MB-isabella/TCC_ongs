@@ -101,6 +101,10 @@ export default function PerfilOng() {
 										<span>{ong.instagram?.trim() || 'ONG não possui instagram'}</span>
 									</div>
 								</div>
+								<div className="categoria-perfil-ong">
+									<strong>Categoria</strong>
+									<span>{Array.isArray(ong.categoria) && ong.categoria.length > 0 ? ong.categoria.join(', ') : 'Não informada'}</span>
+								</div>
 							</div>
 
 							<dl className="dados-perfil-ong">

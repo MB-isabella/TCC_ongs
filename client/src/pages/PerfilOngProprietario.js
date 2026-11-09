@@ -67,9 +67,19 @@ export default function PerfilOngProprietario() {
 									: <div className="logo-ong-proprietario logo-ong-vazio-proprietario" role="img" aria-label="Logo não cadastrada">
 										<img src="/images/usuariobranco.png" alt="" />
 									</div>}
-								<div className="cartao-identidade-ong-proprietario">
-									<strong>{ong.login || '—'}</strong>
-									<h1 id="nome-ong-proprietario">{ong.nome}</h1>
+								<div className="dados-identidade-ong-proprietario">
+									<div className="cartao-identidade-ong-proprietario">
+										<strong>{ong.login || '—'}</strong>
+										<h1 id="nome-ong-proprietario">{ong.nome}</h1>
+									</div>
+									{Array.isArray(ong.categoria) && ong.categoria.length > 0 && (
+										<div className="categorias-ong-proprietario">
+											<strong>Categoria</strong>
+											<ul>
+												{ong.categoria.map((categoria) => <li key={categoria}>{categoria}</li>)}
+											</ul>
+										</div>
+									)}
 								</div>
 							</div>
 
@@ -85,15 +95,6 @@ export default function PerfilOngProprietario() {
 								<div><dt>Região</dt><dd>{ong.cidade_regiao || '—'}</dd></div>
 								<div><dt>E-mail</dt><dd>{ong.email || '—'}</dd></div>
 							</dl>
-
-							{Array.isArray(ong.categoria) && ong.categoria.length > 0 && (
-								<div className="categorias-ong-proprietario">
-									<strong>Categorias</strong>
-									<ul>
-										{ong.categoria.map((categoria) => <li key={categoria}>{categoria}</li>)}
-									</ul>
-								</div>
-							)}
 
 							<div className="detalhes-ong-proprietario">
 								<section className="sobre-ong-proprietario" aria-labelledby="titulo-sobre-ong-proprietario">

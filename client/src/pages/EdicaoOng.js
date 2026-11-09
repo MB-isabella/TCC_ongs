@@ -6,6 +6,7 @@ import {
 	getDadosSessao,
 	getPerfilOngsProprietario,
 } from '../services/catalogo';
+import categoriasOng from '../constants/categoriasOng';
 
 function CampoEditavel({
 	id,
@@ -54,6 +55,7 @@ export default function EdicaoOng() {
 	const [erro, setErro] = useState('');
 	const [nome, setNome] = useState('');
 	const [login, setLogin] = useState('');
+	const [categorias, setCategorias] = useState([]);
 	const [instagram, setInstagram] = useState('');
 	const [email, setEmail] = useState('');
 	const [cnpj, setCnpj] = useState('');
@@ -89,6 +91,7 @@ export default function EdicaoOng() {
 				setOng(dados);
 				setNome(dados.nome || '');
 				setLogin(dados.login || '');
+				setCategorias(Array.isArray(dados.categoria) ? dados.categoria : []);
 				setInstagram(dados.instagram || '');
 				setEmail(dados.email || '');
 				setCnpj(dados.cnpj || '');
@@ -159,9 +162,23 @@ export default function EdicaoOng() {
 		setErro('');
 	};
 
+	const alternarCategoria = (categoria) => {
+		setCategorias((atuais) => {
+			if (atuais.includes(categoria)) {
+				return atuais.length > 1 ? atuais.filter((item) => item !== categoria) : atuais;
+			}
+			return [...atuais, categoria];
+		});
+	};
+
 	const salvarEdicao = async (evento) => {
 		evento.preventDefault();
 		setErro('');
+
+		if (categorias.length === 0) {
+			setErro('Selecione ao menos uma categoria para a ONG.');
+			return;
+		}
 
 		if (carrosselVisivel.length < 1 || carrosselVisivel.length > 5) {
 			setErro('O carrossel precisa conter de 1 a 5 imagens.');
@@ -172,6 +189,7 @@ export default function EdicaoOng() {
 		const dados = new FormData();
 		dados.append('nome', nome);
 		dados.append('login', login);
+		categorias.forEach((categoria) => dados.append('categoria', categoria));
 		dados.append('email', email);
 		dados.append('cnpj', cnpj);
 		dados.append('cidade_regiao', regiao);
@@ -266,6 +284,25 @@ export default function EdicaoOng() {
 						<div className="identidade-form-edicao-ong">
 							<CampoEditavel id="nome-edicao-ong" label="Nome da ONG" value={nome} onChange={setNome} />
 							<CampoEditavel id="login-edicao-ong" label="Nome de usuário" value={login} onChange={setLogin} />
+							<div className="campo-categorias-edicao-ong" role="group" aria-labelledby="titulo-categorias-edicao-ong">
+								<p id="titulo-categorias-edicao-ong">Categoria(s) da ONG <span>(selecione ao menos uma)</span></p>
+								<div className="opcoes-categorias-edicao-ong">
+									{categoriasOng.map((categoria) => {
+										const selecionada = categorias.includes(categoria);
+										return (
+											<button
+												key={categoria}
+												type="button"
+												className={selecionada ? 'selecionada' : ''}
+												aria-pressed={selecionada}
+												onClick={() => alternarCategoria(categoria)}
+											>
+												{categoria}
+											</button>
+										);
+									})}
+								</div>
+							</div>
 						</div>
 
 						<div className="dados-form-edicao-ong">

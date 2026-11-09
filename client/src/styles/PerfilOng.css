@@ -70,6 +70,7 @@
 }
 
 .identidade-texto-perfil-ong {
+	flex: 1 1 auto;
 	min-width: 0;
 	padding-bottom: 12px;
 }
@@ -95,6 +96,32 @@
 	width: 17px;
 	height: 17px;
 	object-fit: contain;
+}
+
+.categoria-perfil-ong {
+	display: flex;
+	flex: 0 0 auto;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 4px;
+	width: clamp(110px, 16vw, 136px);
+	max-width: 100%;
+	min-height: 58px;
+	box-sizing: border-box;
+	padding: 8px 10px;
+	border-radius: 12px;
+	color: #4f171a;
+	background: #f2d1d3;
+	font-size: 13px;
+	text-align: center;
+	box-shadow: 0 4px 12px rgba(51, 4, 8, .1);
+}
+
+.categoria-perfil-ong strong {
+	color: #781117;
+	font-size: 10px;
+	text-transform: uppercase;
 }
 
 .dados-perfil-ong {
@@ -255,6 +282,7 @@
 	}
 
 	.identidade-perfil-ong {
+		flex-wrap: wrap;
 		gap: 12px;
 		margin-left: 5px;
 		margin-bottom: 16px;
@@ -268,6 +296,12 @@
 	.identidade-texto-perfil-ong {
 		padding-bottom: 7px;
 		transform: translateY(16px);
+	}
+
+	.categoria-perfil-ong {
+		align-items: center;
+		padding: 8px 10px;
+		text-align: center;
 	}
 
 	.dados-perfil-ong {

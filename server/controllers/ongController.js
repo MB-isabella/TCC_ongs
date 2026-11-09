@@ -183,12 +183,22 @@ const editarOng = async (req, res) => {
   const { nome, login, email, senha, cnpj, cidade_regiao, categoria, descricao, logo, banner, qrcode, chave_pix, instagram,
     fotos_remover // Array de URLs das fotos que o usuário deseja EXCLUIR do carrossel ex: ["https://res.cloudinary..."]
   } = req.body;
+  const categorias = categoria === undefined
+    ? undefined
+    : (Array.isArray(categoria) ? categoria : [categoria])
+      .flatMap((item) => typeof item === 'string' ? item.split(',') : [])
+      .map((item) => item.trim())
+      .filter(Boolean);
 
   try {
     const ongEditar = await Ong.findById(id);
 
     if (!ongEditar) {
       return res.status(404).json({ mensagem: 'Ong não encontrada' });
+    }
+
+    if (categorias && categorias.length === 0) {
+      return res.status(400).json({ mensagem: 'Campo obrigatório (Categoria): selecione ao menos uma categoria.' });
     }
 
     if (senha && senha.trim() !== '') {
@@ -234,9 +244,7 @@ const editarOng = async (req, res) => {
     if (email !== undefined) ongEditar.email = email;
     if (cnpj !== undefined) ongEditar.cnpj = cnpj;
     if (cidade_regiao !== undefined) ongEditar.cidade_regiao = cidade_regiao;
-    if (categoria !== undefined) {
-      ongEditar.categoria = Array.isArray(categoria) ? categoria : [categoria];
-    }
+    if (categorias !== undefined) ongEditar.categoria = categorias;
     if (descricao !== undefined) ongEditar.descricao = descricao;
     if (chave_pix !== undefined) ongEditar.chave_pix = chave_pix;
     if (instagram !== undefined) ongEditar.instagram = instagram;

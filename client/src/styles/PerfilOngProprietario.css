@@ -77,12 +77,19 @@
 	object-fit: contain;
 }
 
+.dados-identidade-ong-proprietario {
+	display: flex;
+	align-items: center;
+	flex-direction: column;
+	width: 100%;
+	margin-top: 5px;
+}
+
 .cartao-identidade-ong-proprietario {
 	width: min(100%, 285px);
 	display: flex;
 	align-items: center;
 	flex-direction: column;
-	margin-top: 5px;
 	padding: 5px 12px 7px;
 	border-radius: 5px;
 	background: #fff;
@@ -170,19 +177,30 @@
 .categorias-ong-proprietario {
 	display: flex;
 	align-items: center;
-	flex-wrap: wrap;
-	gap: 7px;
-	margin: -8px 0 14px;
-	color: #98696a;
-	font-size: 12px;
+	flex-direction: column;
+	gap: 2px;
+	width: fit-content;
+	max-width: 100%;
+	margin-top: 6px;
+	padding: 4px 70px;
+	border-radius: 7px;
+	color: #781117;
+	background: #f8e5e6;
+	font-size: 11px;
+	text-align: center;
+	box-shadow: 0 3px 12px rgba(50, 0, 0, .06);
 }
 
 .categorias-ong-proprietario strong {
+	color: #98696a;
+	font-size: 9px;
 	font-weight: 600;
+	text-transform: uppercase;
 }
 
 .categorias-ong-proprietario ul {
 	display: flex;
+	justify-content: center;
 	flex-wrap: wrap;
 	gap: 5px;
 	margin: 0;
@@ -191,10 +209,8 @@
 }
 
 .categorias-ong-proprietario li {
-	padding: 3px 8px;
-	border-radius: 10px;
-	color: #781117;
-	background: #f8e5e6;
+	color: #640b0e;
+	font-weight: 500;
 }
 
 .detalhes-ong-proprietario {
