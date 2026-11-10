@@ -459,8 +459,13 @@
 	font-size: 11px;
 }
 
-.pagamento-form-edicao-ong > .campo-edicao-ong .entrada-edicao-ong input {
+.pagamento-form-edicao-ong > .campo-edicao-ong {
+	width: 100%;
 	max-width: 240px;
+}
+
+.pagamento-form-edicao-ong > .campo-edicao-ong .entrada-edicao-ong input {
+	max-width: none;
 }
 
 .acoes-form-edicao-ong {
